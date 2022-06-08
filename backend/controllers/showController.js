@@ -9,6 +9,10 @@ const getShows = (req, res) => {
 //@route   POST /api/shows/
 //@access  Private
 const setShows = (req, res) => {
+    if(!req.body.text){
+        res.status(400)
+        throw new Error('Please add a new text field')
+    }
     res.status(200).json({ message: 'set show'})
 }
 

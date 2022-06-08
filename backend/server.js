@@ -1,5 +1,6 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
+const {errorHandler} = require('./middleware/errorMiddleware')
 const port = process.env.PORT || 5000
 
 const app = express()
@@ -10,6 +11,9 @@ app.use(express.urlencoded({ extended: false }))
 
 // Configure express routes
 app.use('/api/shows/', require('./routes/showRoutes'))
+
+// This middle ware will replace express error handler
+app.use(errorHandler)
 
 
 app.listen(port, () => console.log(`Server started on port:${port}`))
