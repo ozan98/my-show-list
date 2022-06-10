@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }))
 
 // Configure express routes
 app.use('/api/shows/', require('./routes/showRoutes'))
+app.use('/api/users/', require('./routes/userRoutes'))
 
 // This middle ware will replace express error handler
 app.use(errorHandler)

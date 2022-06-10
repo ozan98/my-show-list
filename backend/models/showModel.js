@@ -9,10 +9,11 @@ const showSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please provide an image']
     },
-    score: {
+    mediaType: {
         type: String,
+        require: [true, 'Please provide a media type']
     },
-    progess: {
+    score: {
         type: String,
     },
     status: {
