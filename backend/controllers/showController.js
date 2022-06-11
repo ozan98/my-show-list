@@ -6,7 +6,7 @@ const Show = require('../models/showModel')
 //@route   GET /api/shows/
 //@access  Private
 const getShows = asyncHandler(async (req, res) => {
-    const shows = await Show.find({})
+    const shows = await Show.find({ user: req.user.id})
 
     res.status(200).json(shows)
 })
@@ -21,6 +21,7 @@ const setShows = asyncHandler(async (req, res) => {
     }
 
     const show = await Show.create({
+        user: req.user,
         title: req.body.title,
         image: req.body.image,
         mediaType: req.body.mediaType,
@@ -43,6 +44,18 @@ const updateShow = asyncHandler(async (req, res) => {
         throw new Error('Show not found')
     }
 
+    // Check for user
+    if(!req.user) {
+        res.status(401)
+        throw new Error('User not found')
+    }
+
+    // Checking if logged in user mateched with the user in corrosponding show
+    if(req.user.id !== show.user.toString()) {
+        req.status(401)
+        throw new Error('User not authorized')
+    }
+
     const updatedShow = await Show.findByIdAndUpdate(req.params.id, req.body, { new: true }) 
     res.status(200).json(updatedShow)
 })
@@ -56,6 +69,18 @@ const deleteShow = asyncHandler(async (req, res) => {
     if(!show) {
         res.status(400)
         throw new Error('Show not found')
+    }
+
+    // Check for user
+    if(!req.user) {
+        res.status(401)
+        throw new Error('User not found')
+    }
+
+    // Checking if logged in user mateched with the user in corrosponding show
+    if(req.user.id !== show.user.toString()) {
+        req.status(401)
+        throw new Error('User not authorized')
     }
 
     await show.remove()

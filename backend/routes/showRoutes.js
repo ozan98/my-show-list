@@ -1,9 +1,10 @@
 const express = require('express')
 router = express.Router()
+const { protect } = require('../middleware/authMiddleware')
 const {getShows, setShows, updateShow, deleteShow} = require('../controllers/showController')
 
-router.route('/').get(getShows).post(setShows)
-router.route('/:id').put(updateShow).delete(deleteShow)
+router.route('/').get(protect, getShows).post(protect, setShows)
+router.route('/:id').put(protect, updateShow).delete(protect, deleteShow)
 
 
 module.exports = router
