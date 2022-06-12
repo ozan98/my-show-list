@@ -1,4 +1,5 @@
 const User = require('../models/userModel')
+const Show = require('../models/showModel')
 const aysncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
@@ -72,6 +73,36 @@ const loginUser = aysncHandler(async (req, res) => {
 //@acess    public
 
 const getMe = aysncHandler(async (req, res) => {
+    const userShows = await Show.find({user: req.user.id})
+
+    const completedMovies = userShows.filter((show) => {
+        return (show.mediaType === 'movie' && show.status === 'completed')
+    })
+
+    const completedShows = userShows.filter((show) => {
+        return (show.mediaType === 'series' && show.status === 'completed')
+    })
+
+    const startedMovies = userShows.filter((show) => {
+        return (show.mediaType === 'movie' && show.status === 'started')
+    })
+
+    const startedShows = userShows.filter((show) => {
+        return (show.mediaType === 'series' && show.status === 'started')
+    })
+
+    
+
+    res.status(200).json({
+        movieData: {
+            completed: completedMovies,
+            started: startedMovies,
+        },
+        showData: {
+            completed: completedShows,
+            started: startedShows,
+        }
+    })
 
 })
 
