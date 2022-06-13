@@ -10,7 +10,7 @@ const showSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please add a title value']
     },
-    image: {
+    imagePath: {
         type: String,
         required: [true, 'Please provide an image']
     },

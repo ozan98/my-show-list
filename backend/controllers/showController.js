@@ -23,7 +23,7 @@ const setShows = asyncHandler(async (req, res) => {
     const show = await Show.create({
         user: req.user,
         title: req.body.title,
-        image: req.body.image,
+        imagePath: req.body.imagePath,
         mediaType: req.body.mediaType,
         score: req.body.score,
         status: req.body.status

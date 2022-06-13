@@ -80,7 +80,7 @@ const getMe = aysncHandler(async (req, res) => {
     })
 
     const completedShows = userShows.filter((show) => {
-        return (show.mediaType === 'series' && show.status === 'completed')
+        return (show.mediaType === 'tv' && show.status === 'completed')
     })
 
     const startedMovies = userShows.filter((show) => {
@@ -88,7 +88,7 @@ const getMe = aysncHandler(async (req, res) => {
     })
 
     const startedShows = userShows.filter((show) => {
-        return (show.mediaType === 'series' && show.status === 'started')
+        return (show.mediaType === 'tv' && show.status === 'started')
     })
 
     
