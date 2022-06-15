@@ -5,11 +5,11 @@ function Register() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        password1: '',
+        password: '',
         password2: '',
     })
 
-    const {name, email, password1, password2} = formData
+    const {name, email, password, password2} = formData
 
     const onChange = (e) => {
         setFormData((prevState) => {
@@ -36,7 +36,7 @@ function Register() {
                             id="name"
                             name="name"
                             value={name}
-                            placeHolder="Enter name"
+                            placeholder="Enter name"
                             onChange={onChange}
                         />
                     </div>
@@ -47,7 +47,7 @@ function Register() {
                             id="email"
                             name="email"
                             value={email}
-                            placeHolder="Enter email"
+                            placeholder="Enter email"
                             onChange={onChange}
                         />
                     </div>
@@ -55,10 +55,10 @@ function Register() {
                     <div>
                         <input 
                             type="password"
-                            id="password1"
-                            name="password1"
-                            value={password1}
-                            placeHolder="Enter password"
+                            id="password"
+                            name="password"
+                            value={password}
+                            placeholder="Enter password"
                             onChange={onChange}
                         />
                     </div>
@@ -69,7 +69,7 @@ function Register() {
                             id="password2"
                             name="password2"
                             value={password2}
-                            placeHolder="Enter password"
+                            placeholder="Enter password"
                             onChange={onChange}
                         />
                     </div>
