@@ -1,21 +1,39 @@
 import axios from 'axios'
 
-const BASE_URL = "https://api.themoviedb.org/3/"
 const API_KEY = "?api_key=1875d71dd67886cbbc594f365f9bfed7"
 
-const SEARCH_QUERY = " "
+const BASE_URL = "https://api.themoviedb.org/3/"
+const IMAGE_URL = "https://image.tmdb.org/t/p/w500"
 
-const TRENDING_QUERY = "trending/all/week"
 
-const getTrending = async () => {
+
+const SEARCH = ""
+const TRENDING_MOVIE = "trending/movie/week"
+const TRENDING_TV = "trending/tv/week"
+
+
+const getTrendingMovie = async () => {
     
-    const response = await axios.get(`${BASE_URL}${TRENDING_QUERY}${API_KEY}`)
+    const response = await axios.get(`${BASE_URL}${TRENDING_MOVIE}${API_KEY}`)
 
     return response.data.results
 }
 
+const getTrendingTv = async () => {
+    const response = await axios.get(`${BASE_URL}${TRENDING_TV}${API_KEY}`)
+
+    return response.data.results
+}
+
+
+const getImage = (imagePath) => {
+    return `${IMAGE_URL}${imagePath}`
+}
+
 const TMDBservice = {
-    getTrending,
+    getTrendingMovie,
+    getTrendingTv,
+    getImage,
 }
 
 export default TMDBservice
