@@ -9,6 +9,10 @@ function Header() {
             </div>
 
             <div>
+                <Link to="/mylist">My List</Link>
+            </div>
+
+            <div>
                 <Link to="/discover">Discover</Link>
             </div>
 
@@ -19,6 +23,7 @@ function Header() {
             <div>
                 <Link to="/register">Register</Link>
             </div>
+
         </header>
     )
 }

@@ -36,6 +36,9 @@ function Discover() {
         trendingTv()
     },[])
 
+    const selectMedia = () => {
+        console.log('selected')
+    }
     // Get image of a tv or movie
     const getImage = (imagePath) => {
         const image = TMDBservice.getImage(imagePath)
@@ -49,6 +52,10 @@ function Discover() {
                         key={movie.id}
                         name={movie.title}
                         image={getImage(movie.poster_path)}
+                        score={movie.vote_average}
+                        releaseDate={movie.release_date}
+                        overView={movie.overview}
+                        checkMedia={selectMedia}
                     />
         })
     }
@@ -60,6 +67,10 @@ function Discover() {
                         key={tv.id}
                         name={tv.name}
                         image={getImage(tv.poster_path)}
+                        score={tv.vote_average}
+                        releaseDate={tv.release_date}
+                        overView={tv.overview}
+                        checkMedia={selectMedia}
                     />
         })
     }
