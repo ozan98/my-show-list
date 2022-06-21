@@ -1,53 +1,44 @@
 import React from 'react'
 import ShowCard from '../components/ShowCard'
-import TMDBservice from '../tmdbService/APIservice'
 
 import {useState, useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {getTrendingMovies, getTrendingTvs, reset} from '../features/tmdb/tmdbSlice'
+
+
 
 
 function Discover() {
-    const [trendingMovieData, setTrendingMovieData] = useState([])
-    const [trendingTvData, setTrendingTvData] = useState([])
+    const IMAGE_URL = "https://image.tmdb.org/t/p/w500"
+    const dispatch = useDispatch()
 
-
+    const {trendingMovies, trendingTvs, isLoading, isError, message} = useSelector((state) => state.tmdb) 
+    
     useEffect(() => {
-        const trendingMovie = async () => {
-            try {
-                const data = await TMDBservice.getTrendingMovie()
-                setTrendingMovieData(data)
-                console.log(data)
-            } catch (error) {
-                console.log('getting trending data failed')
-                console.log(error)
-            }
+        if(isError) {
+            console.log(message)
         }
 
-        const trendingTv = async () => {
-            try {
-                const data = await TMDBservice.getTrendingTv()
-                setTrendingTvData(data)
-                console.log(data)
-            } catch (error) {
-                console.log('getting trending data failed')
-                console.log(error)
-            }
+        dispatch(getTrendingMovies())
+        dispatch(getTrendingTvs())
+
+        return () => {
+            dispatch(reset())
         }
-        trendingMovie()
-        trendingTv()
-    },[])
+
+    }, [])
 
     const selectMedia = () => {
         console.log('selected')
     }
     // Get image of a tv or movie
     const getImage = (imagePath) => {
-        const image = TMDBservice.getImage(imagePath)
-        return image
+        return `${IMAGE_URL}${imagePath}`
     }
 
     // Getting component list of trending movies
     const getTrendingMovie = () => {
-        return trendingMovieData.map((movie) => {
+        return trendingMovies.map((movie) => {
             return <ShowCard
                         key={movie.id}
                         name={movie.title}
@@ -62,7 +53,7 @@ function Discover() {
 
     // Getting component list of trending tv
     const getTrendingTv = () => {
-        return trendingTvData.map((tv) => {
+        return trendingTvs.map((tv) => {
             return <ShowCard
                         key={tv.id}
                         name={tv.name}

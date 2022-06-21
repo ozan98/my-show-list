@@ -26,14 +26,9 @@ const getTrendingTv = async () => {
 }
 
 
-const getImage = (imagePath) => {
-    return `${IMAGE_URL}${imagePath}`
-}
-
 const TMDBservice = {
     getTrendingMovie,
     getTrendingTv,
-    getImage,
 }
 
 export default TMDBservice
