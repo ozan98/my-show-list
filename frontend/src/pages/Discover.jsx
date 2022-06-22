@@ -3,7 +3,7 @@ import ShowCard from '../components/ShowCard'
 
 import {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {getTrendingMovies, getTrendingTvs, reset} from '../features/tmdb/tmdbSlice'
+import {getTrendingMovies, getTrendingTvs, getSearchedMedia, reset} from '../features/tmdb/tmdbSlice'
 
 
 
@@ -12,8 +12,9 @@ function Discover() {
     const IMAGE_URL = "https://image.tmdb.org/t/p/w500"
     const dispatch = useDispatch()
 
-    const {trendingMovies, trendingTvs, isLoading, isError, message} = useSelector((state) => state.tmdb) 
-    
+    const {trendingMovies, trendingTvs, searchedMedia, isLoading, isError, message} = useSelector((state) => state.tmdb) 
+    const [searchString, setSearchString] = useState('')
+
     useEffect(() => {
         if(isError) {
             console.log(message)
@@ -34,6 +35,18 @@ function Discover() {
     // Get image of a tv or movie
     const getImage = (imagePath) => {
         return `${IMAGE_URL}${imagePath}`
+    }
+    
+    const handleSearch = (e) => {
+        setSearchString(e.target.value)
+        console.log(searchString)
+    }
+
+    const search = (e) => {
+        e.preventDefault()
+        dispatch(getSearchedMedia(searchString))
+        console.log(searchedMedia)
+
     }
 
     // Getting component list of trending movies
@@ -69,6 +82,17 @@ function Discover() {
     return (
         <>
             Discover
+            <form onSubmit={search}>
+                <input 
+                    type="text"
+                    id="search"
+                    name="search"
+                    value={searchString}
+                    onChange={handleSearch}
+                     />
+                <button type="submit">Search</button>
+            </form>
+
             <div className="trending-movie-continer">
             {getTrendingMovie()}
             </div>

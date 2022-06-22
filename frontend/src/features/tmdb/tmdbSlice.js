@@ -6,6 +6,7 @@ const initialState = {
     trendingMovies: [],
     trendingTvs: [],
     searchedMedia: [],
+    onChecking: {},
     isError: false,
     isSuccess: false,
     isLoading: false,
@@ -28,6 +29,17 @@ export const getTrendingMovies = createAsyncThunk('tmdb/trendingmovies', async (
 export const getTrendingTvs = createAsyncThunk('tmdb/trendingtvs', async (_, thunkAPI) => {
     try {
         return await tmdbservice.getTrendingTv()
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) ||
+                        error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+// Get searched media
+export const getSearchedMedia = createAsyncThunk('tmdb/searchedmedia', async (searchString, thunkAPI) => {
+    try {
+        return await tmdbservice.getSearchedMedia(searchString)
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) ||
                         error.message || error.toString()
@@ -66,6 +78,19 @@ export const tmdbSlice = createSlice({
             state.trendingTvs = action.payload
         })
         .addCase(getTrendingTvs.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.message = action.payload
+        }) // getSearchedMedia
+        .addCase(getSearchedMedia.pending, (state) => {
+            state.isloading = true
+        })
+        .addCase(getSearchedMedia.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isSuccess = true
+            state.searchedMedia = action.payload
+        })
+        .addCase(getSearchedMedia.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
