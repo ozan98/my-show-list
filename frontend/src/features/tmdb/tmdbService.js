@@ -3,7 +3,6 @@ import axios from 'axios'
 const API_KEY = '?api_key=1875d71dd67886cbbc594f365f9bfed7'
 
 const BASE_URL = 'https://api.themoviedb.org/3/'
-const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
 const SEARCH_BASE_URL = 'https://api.themoviedb.org/3/search/multi'
 
 const SEARCH = "&query="

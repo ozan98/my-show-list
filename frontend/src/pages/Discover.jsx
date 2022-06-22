@@ -1,19 +1,14 @@
-import React from 'react'
 import ShowCard from '../components/ShowCard'
-
+import SearchForm from '../components/SearchForm'
 import {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {getTrendingMovies, getTrendingTvs, getSearchedMedia, reset} from '../features/tmdb/tmdbSlice'
-
-
-
+import {getTrendingMovies, getTrendingTvs, reset} from '../features/tmdb/tmdbSlice'
 
 function Discover() {
     const IMAGE_URL = "https://image.tmdb.org/t/p/w500"
     const dispatch = useDispatch()
 
-    const {trendingMovies, trendingTvs, searchedMedia, isLoading, isError, message} = useSelector((state) => state.tmdb) 
-    const [searchString, setSearchString] = useState('')
+    const {trendingMovies, trendingTvs, isLoading, isError, message} = useSelector((state) => state.tmdb) 
 
     useEffect(() => {
         if(isError) {
@@ -37,18 +32,6 @@ function Discover() {
         return `${IMAGE_URL}${imagePath}`
     }
     
-    const handleSearch = (e) => {
-        setSearchString(e.target.value)
-        console.log(searchString)
-    }
-
-    const search = (e) => {
-        e.preventDefault()
-        dispatch(getSearchedMedia(searchString))
-        console.log(searchedMedia)
-
-    }
-
     // Getting component list of trending movies
     const getTrendingMovie = () => {
         return trendingMovies.map((movie) => {
@@ -82,23 +65,17 @@ function Discover() {
     return (
         <>
             Discover
-            <form onSubmit={search}>
-                <input 
-                    type="text"
-                    id="search"
-                    name="search"
-                    value={searchString}
-                    onChange={handleSearch}
-                     />
-                <button type="submit">Search</button>
-            </form>
-
-            <div className="trending-movie-continer">
-            {getTrendingMovie()}
-            </div>
-            <div className="trending-tv-continer">
-            {getTrendingTv()}
-            </div>
+            <section className="search-section">
+                <SearchForm />
+            </section>
+            <section className="trending-section">
+                <div className="trending-movie-continer">
+                {getTrendingMovie()}
+                </div>
+                <div className="trending-tv-continer">
+                {getTrendingTv()}
+                </div>
+            </section>
         </>
     )
 }

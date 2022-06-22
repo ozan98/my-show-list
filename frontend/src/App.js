@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import LandingPage from './pages/LandingPage'
 import Info from './pages/Info'
+// import SeachList from './pages/SearchList'
 
 
 
