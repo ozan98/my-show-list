@@ -1,3 +1,4 @@
+import util from '../util/util'
 import ShowCard from '../components/ShowCard'
 import SearchForm from '../components/SearchForm'
 import {useState, useEffect} from 'react'
@@ -24,8 +25,8 @@ function Discover() {
 
     }, [])
 
-    const selectMedia = () => {
-        console.log('selected')
+    const selectMedia = (id) => {
+        console.log(id)
     }
     // Get image of a tv or movie
     const getImage = (imagePath) => {
@@ -37,8 +38,9 @@ function Discover() {
         return trendingMovies.map((movie) => {
             return <ShowCard
                         key={movie.id}
+                        id={movie.id}
                         name={movie.title}
-                        image={getImage(movie.poster_path)}
+                        image={util.getImage(movie.poster_path)}
                         score={movie.vote_average}
                         releaseDate={movie.release_date}
                         overView={movie.overview}
@@ -52,6 +54,7 @@ function Discover() {
         return trendingTvs.map((tv) => {
             return <ShowCard
                         key={tv.id}
+                        id={tv.id}
                         name={tv.name}
                         image={getImage(tv.poster_path)}
                         score={tv.vote_average}

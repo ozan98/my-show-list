@@ -1,10 +1,10 @@
 import React from 'react'
 
-function ShowCard({name, image, score, releaseDate, overView, checkMedia}) {
+function ShowCard({id, name, image, score, releaseDate, overView, checkMedia}) {
     return(
         <>
             <div className="card-container">
-                <img src={image} alt="" onClick={checkMedia}/>
+                <img src={image} alt="" onClick={() => checkMedia(id)}/>
                 <p>{name}</p>
                 <p>{score}</p>
                 <p>{releaseDate}</p>

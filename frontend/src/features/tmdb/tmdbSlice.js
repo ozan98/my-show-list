@@ -6,7 +6,7 @@ const initialState = {
     trendingMovies: [],
     trendingTvs: [],
     searchedMedia: [],
-    onChecking: {},
+    currentChecking: {},
     isError: false,
     isSuccess: false,
     isLoading: false,
