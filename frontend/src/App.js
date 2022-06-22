@@ -7,7 +7,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import LandingPage from './pages/LandingPage'
 import Info from './pages/Info'
-// import SeachList from './pages/SearchList'
+import SearchListPage from './pages/SearchListPage'
 
 
 
@@ -23,6 +23,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/info' element={<Info />} />
+          <Route path='/searchpage' element={<SearchListPage />} />
         </Routes>
       </Router>
     </>

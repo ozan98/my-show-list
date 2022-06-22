@@ -1,15 +1,18 @@
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {getSearchedMedia} from '../features/tmdb/tmdbSlice'
+import {useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 
 function SearchForm() {
     const dispatch = useDispatch()
-    const {searchedMedia} = useSelector((state) => state.tmdb)
+    const navigate = useNavigate()
+
     const [searchString, setSearchString] = useState('')
 
     const onSubmit = (e) => {
         e.preventDefault()
         dispatch(getSearchedMedia(searchString))
+        navigate('/searchpage')
     }
 
     return (
