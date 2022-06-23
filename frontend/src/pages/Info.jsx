@@ -10,13 +10,19 @@ function Info() {
     const navigate = useNavigate()
 
     const {currentChecking} = useSelector((state) => state.tmdb)
+    const {user} = useSelector((state) => state.auth)
+
     const {id, title, name, poster_path, vote_average, release_date,overview} = currentChecking
 
     useEffect(() => {
         if(Object.keys(currentChecking).length === 0){
             navigate('/discover')
         }
-    },[])
+
+        if(!user) {
+            navigate('/login')
+        }
+    },[user, currentChecking])
     return (
         <>
             info

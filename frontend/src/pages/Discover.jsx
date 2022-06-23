@@ -15,15 +15,20 @@ function Discover() {
     const dispatch = useDispatch()
 
     const {trendingMovies, trendingTvs, isLoading, isError, message} = useSelector((state) => state.tmdb) 
+    const {user} = useSelector((state) => state.auth)
 
     useEffect(() => {
         if(isError) {
             console.log(message)
         }
 
+        if(!user) {
+            navigate('/login')
+        }
+
         dispatch(getTrendingMovies())
         dispatch(getTrendingTvs())
-    }, [])
+    }, [user])
 
     const selectMedia = (id) => {
         const [mediaMovie] = trendingMovies.filter((media) => media.id === id)

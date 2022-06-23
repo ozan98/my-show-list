@@ -17,20 +17,20 @@ function Register() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const {user, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
+    const {user, isLoadingUser, isErrorUser, isSuccessUser, messageUser} = useSelector((state) => state.auth)
 
     useEffect(() => {
-        if(isError) {
-            toast.error(message)
+        if(isErrorUser) {
+            toast.error(messageUser)
         }
 
-        if(isSuccess || user) {
+        if(isSuccessUser || user) {
             navigate('/mylist')
         }
 
         dispatch(reset())
 
-    },[user, isError, isSuccess, message, navigate, dispatch])
+    },[user, isErrorUser, isSuccessUser, messageUser, navigate, dispatch])
 
     const onChange = (e) => {
         setFormData((prevState) => {

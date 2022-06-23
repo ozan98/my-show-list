@@ -7,10 +7,10 @@ const user = JSON.parse(localStorage.getItem('user'))
 // Initial state in the store
 const initialState = {
     user: user ? user : null, // If there is no user in localStorage assign null to user state
-    isError: false,
-    isLoading: false,
-    isSuccess: false,
-    message: '',
+    isErrorUser: false,
+    isLoadingUser: false,
+    isSuccessUser: false,
+    messageUser: '',
 }
 
 // Register user async thunk function
@@ -30,26 +30,26 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         reset: (state) => {
-            state.isLoading = false
-            state.isSuccess = false
-            state.isError = false
-            state.message = ''
+            state.isLoadingUser = false
+            state.isSuccessUser = false
+            state.isErrorUser = false
+            state.messageUser = ''
         },
     },
     extraReducers: (builder) => {
         builder // Register extra reducers
         .addCase(register.pending, (state) => {
-            state.isLoading = true
+            state.isLoadingUser = true
         })
         .addCase(register.fulfilled, (state, action) => {
-            state.isLoading = false
-            state.isSuccess = true
+            state.isLoadingUser = false
+            state.isSuccessUser = true
             state.user = action.payload 
         })
         .addCase(register.rejected, (state, action) => {
-            state.isLoading = false
-            state.isError = true
-            state.message = action.payload
+            state.isLoadingUser = false
+            state.isErrorUser = true
+            state.messageUser = action.payload
             state.user = null // Error while registering no user is created
         })
     },
