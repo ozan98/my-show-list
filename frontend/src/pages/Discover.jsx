@@ -1,12 +1,17 @@
 import util from '../util/util'
 import ShowCard from '../components/ShowCard'
 import SearchForm from '../components/SearchForm'
+import {useNavigate} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {getTrendingMovies, getTrendingTvs, reset} from '../features/tmdb/tmdbSlice'
+import {
+    getTrendingMovies, 
+    getTrendingTvs, 
+    setCheckingMedia, 
+    reset} from '../features/tmdb/tmdbSlice'
 
 function Discover() {
-    const IMAGE_URL = "https://image.tmdb.org/t/p/w500"
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const {trendingMovies, trendingTvs, isLoading, isError, message} = useSelector((state) => state.tmdb) 
@@ -18,19 +23,24 @@ function Discover() {
 
         dispatch(getTrendingMovies())
         dispatch(getTrendingTvs())
-
-        return () => {
-            dispatch(reset())
-        }
-
     }, [])
 
     const selectMedia = (id) => {
-        console.log(id)
-    }
-    // Get image of a tv or movie
-    const getImage = (imagePath) => {
-        return `${IMAGE_URL}${imagePath}`
+        const mediaMovie = trendingMovies.filter((media) => media.id === id)
+        const mediaTv = trendingTvs.filter((media) => media.id === id)
+
+        if(mediaMovie.length === 0){
+            const [media] = mediaTv
+            console.log(media)
+            dispatch(setCheckingMedia(media))
+            navigate('/info')
+        } else {
+            const [media] = mediaMovie
+            console.log(media)
+
+            dispatch(setCheckingMedia(media))
+            navigate('/info')
+        }
     }
     
     // Getting component list of trending movies
@@ -56,7 +66,7 @@ function Discover() {
                         key={tv.id}
                         id={tv.id}
                         name={tv.name}
-                        image={getImage(tv.poster_path)}
+                        image={util.getImage(tv.poster_path)}
                         score={tv.vote_average}
                         releaseDate={tv.release_date}
                         overView={tv.overview}

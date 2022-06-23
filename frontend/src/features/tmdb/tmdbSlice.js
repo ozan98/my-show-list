@@ -53,6 +53,9 @@ export const tmdbSlice = createSlice({
     initialState,
     reducers: {
         reset: (state) => initialState,
+        setCheckingMedia: (state, action) => {
+            state.currentChecking = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder // getTrendingMovies thunk reducers
@@ -98,5 +101,5 @@ export const tmdbSlice = createSlice({
     },
 })
 
-export const {reset} = tmdbSlice.actions
+export const {reset, setCheckingMedia} = tmdbSlice.actions
 export default tmdbSlice.reducer
