@@ -26,19 +26,14 @@ function Discover() {
     }, [])
 
     const selectMedia = (id) => {
-        const mediaMovie = trendingMovies.filter((media) => media.id === id)
-        const mediaTv = trendingTvs.filter((media) => media.id === id)
+        const [mediaMovie] = trendingMovies.filter((media) => media.id === id)
+        const [mediaTv] = trendingTvs.filter((media) => media.id === id)
 
         if(mediaMovie.length === 0){
-            const [media] = mediaTv
-            console.log(media)
-            dispatch(setCheckingMedia(media))
+            dispatch(setCheckingMedia(mediaTv))
             navigate('/info')
         } else {
-            const [media] = mediaMovie
-            console.log(media)
-
-            dispatch(setCheckingMedia(media))
+            dispatch(setCheckingMedia(mediaMovie))
             navigate('/info')
         }
     }
@@ -75,18 +70,35 @@ function Discover() {
         })
     }
 
+    const getTrendingMedia = (list) => {
+        return list.map((tv) => {
+            return <ShowCard
+                        key={tv.id}
+                        id={tv.id}
+                        name={tv.name || tv.title}
+                        image={util.getImage(tv.poster_path)}
+                        score={tv.vote_average}
+                        releaseDate={tv.release_date}
+                        overView={tv.overview}
+                        checkMedia={selectMedia}
+                    />
+        })
+    }
+
     return (
         <>
             Discover
             <section className="search-section">
                 <SearchForm />
             </section>
+
             <section className="trending-section">
                 <div className="trending-movie-continer">
-                {getTrendingMovie()}
+                    {getTrendingMedia(trendingMovies)}
                 </div>
+
                 <div className="trending-tv-continer">
-                {getTrendingTv()}
+                    {getTrendingMedia(trendingTvs)}
                 </div>
             </section>
         </>

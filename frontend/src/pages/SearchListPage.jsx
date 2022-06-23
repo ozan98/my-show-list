@@ -1,18 +1,22 @@
 import util from '../util/util'
 import SearchForm from '../components/SearchForm'
 import ShowCard from '../components/ShowCard'
+import {useNavigate} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import {useDispatch} from 'react-redux'
 import { getSearchedMedia } from '../features/tmdb/tmdbSlice'
 import {setCheckingMedia} from '../features/tmdb/tmdbSlice'
 
 function SearchListPage() {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const {searchedMedia} = useSelector((state) => state.tmdb)
 
     const selectMedia = (id) => {
-        const media = searchedMedia.filter((media) => media.id === id)
+        const [media] = searchedMedia.filter((media) => media.id === id)
         dispatch(setCheckingMedia(media))
+        navigate('/info')
+
       
     }
 
