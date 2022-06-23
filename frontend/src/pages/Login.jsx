@@ -1,13 +1,33 @@
-import React from 'react'
-import {useState} from 'react'
+import {toast} from 'react-toastify'
+import {useState, useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
+import {login, reset} from '../features/auth/authSlice'
 
 function Login() {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     })
 
     const {email, password} = formData
+
+    const {user, isLoadingUser, isErrorUser, isSuccessUser, messageUser} = useSelector((state) => state.auth)
+
+    useEffect(() => {
+        if(isErrorUser) {
+            toast.error(messageUser)
+        }
+
+        if(isSuccessUser || user) {
+            navigate('/mylist')
+        }
+
+        dispatch(reset())
+    },[user, isErrorUser, isSuccessUser, messageUser, navigate, dispatch])
 
     const onChange = (e) => {
         setFormData((prevState) => {
@@ -18,6 +38,17 @@ function Login() {
         })
     }
 
+    const onSubmit = (e) => {
+        e.preventDefault()
+
+        const userData = {
+            email,
+            password,
+        }
+
+        dispatch(login(userData))
+    }
+
     return (
         <>
             <section className="heading">
@@ -26,7 +57,7 @@ function Login() {
             </section>
 
             <section>
-                <form>
+                <form onSubmit={onSubmit}>
                     <div className="form-group">
                     <div>
                         <input 
