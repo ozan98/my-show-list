@@ -15,9 +15,18 @@ const getShows = asyncHandler(async (req, res) => {
 //@route   POST /api/shows/
 //@access  Private
 const setShows = asyncHandler(async (req, res) => {
-    if(!req.body.title || !req.body.imagePath || !req.body.mediaType || !req.body.score || !req.body.status){
+    const { title, imagePath, mediaType, score, status } = req.body
+    if(!title || !imagePath || !mediaType || !score || !status){
         res.status(400)
         throw new Error('Please add a new text field')
+    }
+
+    // Check if title already exist in db
+    const titleExist = await Show.findOne({ title })
+
+    if(titleExist) {
+        res.status(400)
+        throw new Error('Show already exist')
     }
 
     const show = await Show.create({
