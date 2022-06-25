@@ -41,7 +41,7 @@ export const mediaSlice = createSlice({
     name: 'media',
     initialState,
     reducers: {
-        reset: (state) => initialState
+        resetMedia: (state) => initialState
     },
     extraReducers: (builder) => {
         builder // addMedia 
@@ -74,5 +74,5 @@ export const mediaSlice = createSlice({
     }
 })
 
-export const {reset} = mediaSlice.actions
+export const {resetMedia} = mediaSlice.actions
 export default mediaSlice.reducer
