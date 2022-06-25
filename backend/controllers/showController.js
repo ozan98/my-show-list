@@ -15,7 +15,7 @@ const getShows = asyncHandler(async (req, res) => {
 //@route   POST /api/shows/
 //@access  Private
 const setShows = asyncHandler(async (req, res) => {
-    if(!req.body.title || !req.body.image || !req.body.mediaType || !req.body.score || !req.body.status){
+    if(!req.body.title || !req.body.imagePath || !req.body.mediaType || !req.body.score || !req.body.status){
         res.status(400)
         throw new Error('Please add a new text field')
     }
