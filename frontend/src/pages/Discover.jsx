@@ -34,7 +34,7 @@ function Discover() {
         const [mediaMovie] = trendingMovies.filter((media) => media.id === id)
         const [mediaTv] = trendingTvs.filter((media) => media.id === id)
 
-        if(mediaMovie.length === 0){
+        if(!mediaMovie){
             dispatch(setCheckingMedia(mediaTv))
             navigate('/info')
         } else {
@@ -43,37 +43,6 @@ function Discover() {
         }
     }
     
-    // Getting component list of trending movies
-    const getTrendingMovie = () => {
-        return trendingMovies.map((movie) => {
-            return <ShowCard
-                        key={movie.id}
-                        id={movie.id}
-                        name={movie.title}
-                        image={util.getImage(movie.poster_path)}
-                        score={movie.vote_average}
-                        releaseDate={movie.release_date}
-                        overView={movie.overview}
-                        checkMedia={selectMedia}
-                    />
-        })
-    }
-
-    // Getting component list of trending tv
-    const getTrendingTv = () => {
-        return trendingTvs.map((tv) => {
-            return <ShowCard
-                        key={tv.id}
-                        id={tv.id}
-                        name={tv.name}
-                        image={util.getImage(tv.poster_path)}
-                        score={tv.vote_average}
-                        releaseDate={tv.release_date}
-                        overView={tv.overview}
-                        checkMedia={selectMedia}
-                    />
-        })
-    }
 
     const getTrendingMedia = (list) => {
         return list.map((tv) => {

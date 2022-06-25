@@ -17,7 +17,7 @@ const addMedia = async (mediaData, token) => {
 const getAllMedia = async (token) => {
     const config = {
         headers: {
-            Authorization: `Beared ${token}`,
+            Authorization: `Bearer ${token}`,
         },
     }
     const response = await axios.get(API_URL, config)
