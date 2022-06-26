@@ -24,10 +24,11 @@ function Discover() {
 
         if(!user) {
             navigate('/login')
+        }else {
+            dispatch(getTrendingMovies())
+            dispatch(getTrendingTvs())
         }
 
-        dispatch(getTrendingMovies())
-        dispatch(getTrendingTvs())
     }, [user])
 
     const selectMedia = (id) => {
