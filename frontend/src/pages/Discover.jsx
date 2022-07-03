@@ -50,11 +50,8 @@ function Discover() {
             return <ShowCard
                         key={tv.id}
                         id={tv.id}
-                        name={tv.name || tv.title}
                         image={util.getImage(tv.poster_path)}
                         score={tv.vote_average}
-                        releaseDate={tv.release_date}
-                        overView={tv.overview}
                         checkMedia={selectMedia}
                     />
         })
@@ -69,11 +66,11 @@ function Discover() {
 
             <section className="trending-section">
                 <div className="trending-movie-continer">
-                    {getTrendingMedia(trendingMovies)}
+                    {getTrendingMedia(trendingMovies.slice(0, 6))}
                 </div>
 
                 <div className="trending-tv-continer">
-                    {getTrendingMedia(trendingTvs)}
+                    {getTrendingMedia(trendingTvs.slice(0, 6))}
                 </div>
             </section>
         </>

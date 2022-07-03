@@ -5,10 +5,10 @@ function ShowCard({id, name, image, score, releaseDate, overView, checkMedia}) {
         <>
             <div className="card-container">
                 <img src={image} alt="" onClick={() => checkMedia(id)}/>
-                <p>{name}</p>
+                <p>{name || null}</p>
                 <p>{score}</p>
-                <p>{releaseDate}</p>
-                <p>{overView}</p>
+                <p>{releaseDate || null}</p>
+                <p>{overView || null}</p>
             </div>
         </>
     )
