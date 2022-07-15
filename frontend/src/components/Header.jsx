@@ -1,4 +1,5 @@
 import {Link, useNavigate } from 'react-router-dom'
+import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
 import {useSelector, useDispatch} from 'react-redux'
 import {logout, reset} from '../features/auth/authSlice'
 import {resetMedia} from '../features/media/mediaSlice'
@@ -18,38 +19,74 @@ function Header() {
     }
 
     return (
+        // <header className="header">
+        //     <div className="logo">
+        //         <Link to="/">My Show List</Link>
+        //     </div>
+
+        //     <div>
+        //         <Link to="/mylist">My List</Link>
+        //     </div>
+
+        //     <div>
+        //         <Link to="/discover">Discover</Link>
+        //     </div>
+
+        //     {!user ? 
+        //     (
+        //         <>
+        //         <div>
+        //             <Link to="/login">Login</Link>
+        //         </div>
+
+        //         <div>
+        //             <Link to="/register">Register</Link>
+        //         </div>
+        //         </>
+        //     ) 
+        //     : 
+        //     (
+        //         <div>
+        //             <button onClick={onLogout}>Logout</button>
+        //         </div>
+        //     )
+        //     }
+        // </header>
         <header className="header">
-            <div>
-                <Link to="/">My Show List</Link>
+            <div className="logo">
+                <Link to="/"> My Show List</Link>
             </div>
 
+            <nav>
+                <ul className="nav-links">
+                    <li>
+                        <Link to="/mylist">My List</Link>
+                    </li>
+                    <li>
+                        <Link to="/discover">Discover</Link>
+                    </li>
+                </ul>
+            </nav>
             <div>
-                <Link to="/mylist">My List</Link>
+            {user ? (
+                        <>
+                            <button onClick={onLogout}>
+                                <FaSignOutAlt />Logout
+                            </button>
+                        </>
+                    ) :
+                    (
+                        <>
+                            <Link to="/login">
+                                <FaSignInAlt /> Login
+                            </Link>
+
+                            <Link to="/register">
+                                <FaUser /> Register
+                            </Link>
+                        </>
+                    )}
             </div>
-
-            <div>
-                <Link to="/discover">Discover</Link>
-            </div>
-
-            {!user ? 
-            (
-                <>
-                <div>
-                    <Link to="/login">Login</Link>
-                </div>
-
-                <div>
-                    <Link to="/register">Register</Link>
-                </div>
-                </>
-            ) 
-            : 
-            (
-                <div>
-                    <button onClick={onLogout}>Logout</button>
-                </div>
-            )
-            }
         </header>
     )
 }

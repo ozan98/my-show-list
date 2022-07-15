@@ -1,15 +1,117 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #24252A;
 }
 
 body {
-    font-family: 'Poppings', sans-serif;
+    /* font-family: 'Poppings', sans-serif; */
+    font-family: "Montserrat", sans-serif;
+    color: hsl(210, 100%, 87%);
     height: 100vh;
+    /* background: linear-gradient(to right, hsl(210, 100%, 8%), hsl(210, 100%, 16%)); */
 }
+
+.header li, 
+.header a, 
+.header button {
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0fa;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    /* side by side */
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav-links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav-links li a:hover {
+    color: #0088a9;
+}
+
+button {
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+i {
+    background-color: rgba(0, 136, 169, 1);
+
+}
+
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+.heading p {
+    color: #828282;
+}
+
+.form {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 10px
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: inherit;
+}
+
+.form-group label {
+    text-align: left;
+    display: block;
+    margin: 0 0 5px 3px;
+  }
 
 .container {
     width: 100%;
@@ -20,6 +122,27 @@ body {
 }
 .header {
     display: flex;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    appearance: button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-block {
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .trending-movie-continer {
@@ -33,4 +156,10 @@ body {
 img {
     height: 500px;
     width: 300px;
+}
+
+@media (max-width: 600px) {
+    .form{
+        width: 90%;
+    }
 }

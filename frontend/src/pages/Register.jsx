@@ -1,4 +1,5 @@
 import {toast} from 'react-toastify'
+import {FaUser} from 'react-icons/fa'
 import {useNavigate} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
@@ -58,64 +59,64 @@ function Register() {
 
     return (
         <>
-            <section className="heading">
-                <h1>Register</h1>
-                <p>Please add all fields to register</p>
-            </section>
+            <div className="container">
+                <section className="heading">
+                    <h1><FaUser />Register</h1>
+                    <p>Please create an account</p>
+                </section>
 
-            <section>
-                <form onSubmit={onSubmit}>
-                    <div className="form-group">
-                    <div>
-                        <input 
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={name}
-                            placeholder="Enter name"
-                            onChange={onChange}
-                        />
-                    </div>
+                <section className="form">
+                    <form onSubmit={onSubmit}>
+                        <div className="form-group">
+                            <input 
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={name}
+                                placeholder="Enter name"
+                                onChange={onChange}
+                            />
+                        </div>
 
-                    <div>
-                        <input 
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={email}
-                            placeholder="Enter email"
-                            onChange={onChange}
-                        />
-                    </div>
+                        <div className="form-group">
+                            <input 
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={email}
+                                placeholder="Enter email"
+                                onChange={onChange}
+                            />
+                        </div>
 
-                    <div>
-                        <input 
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={password}
-                            placeholder="Enter password"
-                            onChange={onChange}
-                        />
-                    </div>
+                        <div className="form-group">
+                            <input 
+                                type="password"
+                                id="password"
+                                name="password"
+                                value={password}
+                                placeholder="Enter password"
+                                onChange={onChange}
+                            />
+                        </div>
 
-                    <div>
-                        <input 
-                            type="password"
-                            id="password2"
-                            name="password2"
-                            value={password2}
-                            placeholder="Enter password"
-                            onChange={onChange}
-                        />
-                    </div>
-                    </div>
-
-                    <div className="form-group">
-                        <button type="submit">Submit</button>
-                    </div>
-                </form>
-            </section>
+                        <div className="form-group">
+                            <input 
+                                type="password"
+                                id="password2"
+                                name="password2"
+                                value={password2}
+                                placeholder="Enter password"
+                                onChange={onChange}
+                            />
+                        </div>
+                        
+                        <div className="form-group">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
         </>
     )
 }
