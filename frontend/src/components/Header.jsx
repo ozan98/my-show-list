@@ -67,7 +67,7 @@ function Header() {
                     </li>
                 </ul>
             </nav>
-            <div>
+            <div className="user-in-out">
             {user ? (
                         <>
                             <button onClick={onLogout}>

@@ -5,13 +5,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #24252A;
+    
 }
 
 body {
     /* font-family: 'Poppings', sans-serif; */
     font-family: "Montserrat", sans-serif;
     color: hsl(210, 100%, 87%);
+    background-color: #24252A;
     height: 100vh;
     /* background: linear-gradient(to right, hsl(210, 100%, 8%), hsl(210, 100%, 16%)); */
 }
@@ -27,13 +28,16 @@ body {
 
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 30px 10%;
+    margin-bottom: 50px;
+    background-color: #141417;
 }
 
 .logo {
     cursor: pointer;
+    margin-right: auto;
 }
 
 .nav-links {
@@ -54,6 +58,10 @@ header {
     color: #0088a9;
 }
 
+.user-in-out a {
+    padding-left: 10px;
+}
+
 button {
     padding: 9px 25px;
     background-color: rgba(0, 136, 169, 1);
@@ -61,6 +69,12 @@ button {
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 i {
@@ -157,6 +171,8 @@ img {
     height: 500px;
     width: 300px;
 }
+
+
 
 @media (max-width: 600px) {
     .form{

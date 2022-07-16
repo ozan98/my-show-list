@@ -16,7 +16,7 @@ function SearchForm() {
     }
 
     return (
-        <>
+        <div className="search-panel-container">
             <form onSubmit={onSubmit}>
                 <input 
                     type="text"
@@ -27,7 +27,7 @@ function SearchForm() {
                 />
                 <button type="submit">Search</button>
             </form>
-        </>
+        </div>
     )
 }
 
