@@ -17,6 +17,10 @@ function SearchForm() {
 
     return (
         <div className="search-panel-container">
+            <div>
+                <h1>Welcome.</h1>
+                <h2>Search through millions of movies and Tv shows </h2>
+            </div>
             <form onSubmit={onSubmit}>
                 <input 
                     type="text"

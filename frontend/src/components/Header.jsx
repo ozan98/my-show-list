@@ -70,7 +70,7 @@ function Header() {
             <div className="user-in-out">
             {user ? (
                         <>
-                            <button onClick={onLogout}>
+                            <button className="logout-button" onClick={onLogout}>
                                 <FaSignOutAlt />Logout
                             </button>
                         </>

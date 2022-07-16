@@ -59,7 +59,6 @@ function Discover() {
 
     return (
         <>
-            Discover
             <section className="search-section">
                 <SearchForm />
             </section>
