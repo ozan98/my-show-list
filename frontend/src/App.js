@@ -16,15 +16,17 @@ function App() {
     <>
       <Router>
         <Header />
-        <Routes>
-          <Route path='/' element={<LandingPage />} />
-          <Route path='/mylist' element={<MyList />} />
-          <Route path='/discover' element={<Discover />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/info' element={<Info />} />
-          <Route path='/searchpage' element={<SearchListPage />} />
-        </Routes>
+        <div className="page-container">
+          <Routes>
+            <Route path='/' element={<LandingPage />} />
+            <Route path='/mylist' element={<MyList />} />
+            <Route path='/discover' element={<Discover />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/info' element={<Info />} />
+            <Route path='/searchpage' element={<SearchListPage />} />
+          </Routes>
+        </div>
       </Router>
     </>
   );
