@@ -135,7 +135,10 @@ h3 {
 }
 
 .page-container {
-    width: 100%;
+    margin-left: 150px;
+    margin-right: 150px;
+
+    
 }
 .header {
     display: flex;
@@ -170,16 +173,26 @@ h3 {
     align-items: center;
 }
 
-.trending-movie-continer {
+.trending-section > div {
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: space-around;
+
+}
+/* .trending-movie-continer {
+    display: flex;
+    justify-content: space-between;
+    align-items: space-around;
 }
 
 .trending-tv-continer {
     display: flex;
-}
+} */
 
 img {
-    height: 450px;
+    height: 400px;
     width: 250px;
 }
 
