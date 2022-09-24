@@ -216,6 +216,24 @@ img {
     cursor: pointer;
 }
 
+/*myList */
+.my-list-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.my-list-buttons > button {
+    background-color: rgba(0, 136, 169, 1);
+    padding: 10px 30px;
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
 @media (max-width: 600px) {
     .form{
         width: 90%;
