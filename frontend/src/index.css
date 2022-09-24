@@ -182,6 +182,10 @@ h3 {
 
 }
 
+.trending-section > img {
+    cursor: pointer;
+}
+
 
 img {
     height: 400px;
