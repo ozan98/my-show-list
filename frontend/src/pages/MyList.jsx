@@ -91,11 +91,11 @@ function MyList() {
             <h1>My List</h1>
             <div className="my-list-buttons">
                 <button onClick={()=> getMediaStatusList('all medias')}>All medias</button>
-                <button onClick={() => getMediaStatusList('started')}>Currently watching</button>
-                <button onClick={() => getMediaStatusList('started')}>Completed</button>
-                <button onClick={() => getMediaStatusList('started')}>On hold</button>
-                <button onClick={() => getMediaStatusList('started')}>Dropped</button>
-                <button onClick={() => getMediaStatusList('started')}>Plan to watch</button>
+                <button onClick={() => getMediaStatusList('currently watching')}>Currently watching</button>
+                <button onClick={() => getMediaStatusList('completed')}>Completed</button>
+                <button onClick={() => getMediaStatusList('on hold')}>On hold</button>
+                <button onClick={() => getMediaStatusList('dropped')}>Dropped</button>
+                <button onClick={() => getMediaStatusList('plan to watch')}>Plan to watch</button>
             </div>
             {renderMedias()}
         </>
