@@ -14,13 +14,9 @@ function Info() {
     const {currentChecking} = useSelector((state) => state.tmdb)
     const {user} = useSelector((state) => state.auth)
 
-    const {id, title, name, poster_path, vote_average, release_date,overview} = currentChecking
+    const {id, title, name, poster_path, vote_average, release_date, overview} = currentChecking
 
     useEffect(() => {
-        // if(Object.keys(currentChecking).length === 0){
-        //     navigate('/discover')
-        // }
-
         if(!user) {
             navigate('/login')
         }
@@ -39,8 +35,16 @@ function Info() {
 
     return (
         <>
-            info
-            <ShowCard 
+            
+            <div className="media-info-container">
+                <div className="media-description-container">
+                    <img src={util.getImage(poster_path)} alt="movieInfo" />
+                </div>
+                <div className="media-overview-container">
+                    <h1>{title || name}</h1>
+                </div>
+            </div>
+            {/* <ShowCard 
                 key={id}
                 id={id}
                 name={title || name}
@@ -49,7 +53,7 @@ function Info() {
                 releaseDate={release_date}
                 overView={overview}
             />
-            {!currentChecking ? (<> </>) : ( <button onClick={addMediaHandler}> add </button> ) }
+            {!currentChecking ? (<> </>) : ( <button onClick={addMediaHandler}> add </button> ) } */}
         </>
     )
 }

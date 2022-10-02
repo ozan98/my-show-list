@@ -47,14 +47,28 @@ export const getSearchedMedia = createAsyncThunk('tmdb/searchedmedia', async (se
     }
 })
 
+//setCurrentChecking
+export const setCurrentChecking = createAsyncThunk('tmdb/setCurrentChecking', async (media, thunkAPI) =>{
+    try {
+        const creditData = await tmdbservice.getCreditInfo(media)
+        const data =  await {...media, creditData}
+        return data
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) ||
+                        error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 // Creating the TMDB Slice
 export const tmdbSlice = createSlice({
     name: 'tmdb',
     initialState,
     reducers: {
-        reset: (state) => initialState,
+        reset: (state) => initialState.currentChecking,
         setCheckingMedia: (state, action) => {
-            state.currentChecking = action.payload
+
+            state.currentChecking = action.payload 
         },
     },
     extraReducers: (builder) => {
@@ -94,6 +108,19 @@ export const tmdbSlice = createSlice({
             state.searchedMedia = action.payload
         })
         .addCase(getSearchedMedia.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.message = action.payload
+        }) // setCurrentChecking
+        .addCase(setCurrentChecking.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(setCurrentChecking.fulfilled, (state, action) =>{
+            state.isLoading = false
+            state.isSuccess = true
+            state.currentChecking = action.payload
+        })
+        .addCase(setCurrentChecking.rejected, (state, action) =>{
             state.isLoading = false
             state.isError = true
             state.message = action.payload

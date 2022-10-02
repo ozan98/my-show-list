@@ -9,6 +9,11 @@ const SEARCH = "&query="
 const TRENDING_MOVIE = 'trending/movie/week'
 const TRENDING_TV = 'trending/tv/week'
 
+const BASE_CREDIT_MOVIE = "/movie"
+const BASE_CREDIT_TV = "/tv"
+const CREDIT = "/credits"
+
+
 
 const getTrendingMovie = async () => {
     
@@ -29,11 +34,23 @@ const getSearchedMedia = async (searchString) => {
     return response.data.results
 }
 
+const getCreditInfo = async (media) => {
+    if(media.title) {
+        const response = await axios.get(`${BASE_URL}${BASE_CREDIT_MOVIE}/${media.id}${CREDIT}${API_KEY}`)
+        return response.data
+    }else {
+        const response = await axios.get(`${BASE_URL}${BASE_CREDIT_TV}/${media.id}${CREDIT}${API_KEY}`)
+        return response.data.results
+    }
+
+}
+
 
 const TMDBservice = {
     getTrendingMovie,
     getTrendingTv,
     getSearchedMedia,
+    getCreditInfo,
 }
 
 export default TMDBservice

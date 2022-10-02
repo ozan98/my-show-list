@@ -238,6 +238,21 @@ img {
     cursor: pointer;
 }
 
+/* info */
+.media-info-container {
+    display: grid;
+    /* grid-template-columns: 15% 85%; */
+    grid-template-columns: 1fr 5fr;
+
+    /* gap: 1px; */
+}
+
+.media-description-container {
+}
+
+.media-overview-container {
+}
+
 @media (max-width: 600px) {
     .form{
         width: 90%;

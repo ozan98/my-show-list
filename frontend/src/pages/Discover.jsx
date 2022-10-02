@@ -7,7 +7,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {
     getTrendingMovies, 
     getTrendingTvs, 
-    setCheckingMedia, 
+    setCurrentChecking, 
     reset} from '../features/tmdb/tmdbSlice'
 
 function Discover() {
@@ -36,10 +36,10 @@ function Discover() {
         const [mediaTv] = trendingTvs.filter((media) => media.id === id)
 
         if(!mediaMovie){
-            dispatch(setCheckingMedia(mediaTv))
+            dispatch(setCurrentChecking(mediaTv))
             navigate('/info')
         } else {
-            dispatch(setCheckingMedia(mediaMovie))
+            dispatch(setCurrentChecking(mediaMovie))
             navigate('/info')
         }
     }
