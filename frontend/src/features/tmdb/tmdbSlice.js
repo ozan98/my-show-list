@@ -1,3 +1,4 @@
+import util from '../../util/util'
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import tmdbservice from './tmdbService'
 
@@ -51,7 +52,10 @@ export const getSearchedMedia = createAsyncThunk('tmdb/searchedmedia', async (se
 export const setCurrentChecking = createAsyncThunk('tmdb/setCurrentChecking', async (media, thunkAPI) =>{
     try {
         const creditData = await tmdbservice.getCreditInfo(media)
-        const data =  await {...media, creditData}
+
+        const genres = util.getGenre(media, media.genre_ids)
+        const data =  {...media, creditData, genres}
+        
         return data
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) ||

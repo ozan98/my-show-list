@@ -14,8 +14,8 @@ function Info() {
     const {currentChecking} = useSelector((state) => state.tmdb)
     const {user} = useSelector((state) => state.auth)
 
-    const {id, title, name, poster_path, vote_average, release_date, overview} = currentChecking
-
+    const {id, title, name, poster_path, vote_average, release_date, overview, genres, creditData} = currentChecking
+    
     useEffect(() => {
         if(!user) {
             navigate('/login')
@@ -33,6 +33,13 @@ function Info() {
         dispatch(addMedia(mediaData))
     }
 
+    const getGenres = (genreList) => {
+        console.log(genreList)
+        return genreList.map((genre) => {
+            return <p key={genre.id}>{genre.name}</p>
+        })
+    }
+
     return (
         <>
             
@@ -42,6 +49,12 @@ function Info() {
                 </div>
                 <div className="media-overview-container">
                     <h1>{title || name}</h1>
+                    <p>{release_date}</p>
+                    {(genres) ? (getGenres(genres.mediaGenreList)) : null}
+
+                    <div className="score-info-container">
+                        
+                    </div>
                 </div>
             </div>
             {/* <ShowCard 
