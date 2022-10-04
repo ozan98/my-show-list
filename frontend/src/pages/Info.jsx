@@ -1,6 +1,6 @@
 import util from '../util/util'
-import ShowCard from '../components/ShowCard'
 import CastCard from '../components/CastCard'
+import AddMediaForm from '../components/AddMediaForm'
 import {useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {addMedia} from '../features/media/mediaSlice'
@@ -54,6 +54,7 @@ function Info() {
     const getCast = (castList) => {
         return castList.map((cast) => {
             return <CastCard
+                    key={cast.id}
                     profileImg={util.getImage(cast.profile_path)}
                     name={cast.name}
                     character={cast.character}
@@ -75,6 +76,7 @@ function Info() {
 
                     <div className="media-score-container">
                         <p>{vote_average}</p>
+                        <AddMediaForm title={title || name} poster_path={poster_path} media_type={media_type}/>
                     </div>
                     <div className="media-overview-container">
                         <p>{overview}</p>
