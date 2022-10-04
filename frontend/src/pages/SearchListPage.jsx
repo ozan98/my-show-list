@@ -4,7 +4,7 @@ import SearchForm from '../components/SearchForm'
 import ShowCard from '../components/ShowCard'
 import {useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import {setCheckingMedia} from '../features/tmdb/tmdbSlice'
+import {setCurrentChecking} from '../features/tmdb/tmdbSlice'
 
 function SearchListPage() {
     const navigate = useNavigate()
@@ -21,7 +21,7 @@ function SearchListPage() {
 
     const selectMedia = (id) => {
         const [media] = searchedMedia.filter((media) => media.id === id)
-        dispatch(setCheckingMedia(media))
+        dispatch(setCurrentChecking(media))
         navigate('/info')
 
       

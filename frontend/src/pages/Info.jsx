@@ -1,5 +1,6 @@
 import util from '../util/util'
 import ShowCard from '../components/ShowCard'
+import CastCard from '../components/CastCard'
 import {useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {addMedia} from '../features/media/mediaSlice'
@@ -14,7 +15,17 @@ function Info() {
     const {currentChecking} = useSelector((state) => state.tmdb)
     const {user} = useSelector((state) => state.auth)
 
-    const {id, title, name, poster_path, vote_average, release_date, overview, genres, creditData} = currentChecking
+    const {id, 
+        title,
+        name,
+        poster_path, 
+        vote_average, 
+        release_date, 
+        overview, 
+        genres, 
+        creditData,
+        media_type,
+        } = currentChecking
     
     useEffect(() => {
         if(!user) {
@@ -40,6 +51,16 @@ function Info() {
         })
     }
 
+    const getCast = (castList) => {
+        return castList.map((cast) => {
+            return <CastCard
+                    profileImg={util.getImage(cast.profile_path)}
+                    name={cast.name}
+                    character={cast.character}
+                    />
+        })
+    }
+
     return (
         <>
             
@@ -47,26 +68,22 @@ function Info() {
                 <div className="media-description-container">
                     <img src={util.getImage(poster_path)} alt="movieInfo" />
                 </div>
-                <div className="media-overview-container">
+                <div className="media-title-container">
                     <h1>{title || name}</h1>
                     <p>{release_date}</p>
                     {(genres) ? (getGenres(genres.mediaGenreList)) : null}
 
-                    <div className="score-info-container">
-                        
+                    <div className="media-score-container">
+                        <p>{vote_average}</p>
+                    </div>
+                    <div className="media-overview-container">
+                        <p>{overview}</p>
+                    </div>
+                    <div className="media-cast-container">
+                        {creditData ? getCast(creditData.cast.slice(0,15)) : null}
                     </div>
                 </div>
             </div>
-            {/* <ShowCard 
-                key={id}
-                id={id}
-                name={title || name}
-                image={util.getImage(poster_path)}
-                score={vote_average}
-                releaseDate={release_date}
-                overView={overview}
-            />
-            {!currentChecking ? (<> </>) : ( <button onClick={addMediaHandler}> add </button> ) } */}
         </>
     )
 }

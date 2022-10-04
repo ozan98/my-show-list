@@ -40,7 +40,7 @@ const getCreditInfo = async (media) => {
         return response.data
     }else {
         const response = await axios.get(`${BASE_URL}${BASE_CREDIT_TV}/${media.id}${CREDIT}${API_KEY}`)
-        return response.data.results
+        return response.data
     }
 
 }

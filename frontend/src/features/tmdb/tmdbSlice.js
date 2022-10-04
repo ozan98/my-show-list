@@ -70,10 +70,10 @@ export const tmdbSlice = createSlice({
     initialState,
     reducers: {
         reset: (state) => initialState.currentChecking,
-        setCheckingMedia: (state, action) => {
+        // setCheckingMedia: (state, action) => {
 
-            state.currentChecking = action.payload 
-        },
+        //     state.currentChecking = action.payload 
+        // },
     },
     extraReducers: (builder) => {
         builder // getTrendingMovies thunk reducers
