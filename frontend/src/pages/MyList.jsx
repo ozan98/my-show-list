@@ -14,9 +14,9 @@ function MyList() {
 
     const [userListMedia, setUserListMedia] = useState([])
 
-    useEffect(() => {
-        dispatch(getAllMedia())
-    },[])
+    // useEffect(() => {
+    //     dispatch(getAllMedia())
+    // },[])
     
     // const getmedias = () => {
     //     return medias.map((media) => {
@@ -32,11 +32,39 @@ function MyList() {
     //     })
     // }
 
-    const renderMedias = () => {
-        return userListMedia.map((media) =>{
+    useEffect(() => {
+        if(!user) {
+            navigate('/login')
+        }
+
+        // if(userListMedia.length === 0){
+        //     dispatch(getAllMedia())
+        //     setUserListMedia([...medias])
+        //     console.log(userListMedia)
+        // }else {
+        //     console.log('else')
+        // }
+            dispatch(getAllMedia())
+            setUserListMedia([...medias])
+        
+
+        // if(medias.length === 0) {
+        //     dispatch(getAllMedia())
+        //     setUserListMedia(medias)
+        // }
+
+        // if(medias.length > 0) {
+        //     setUserListMedia(medias)
+        // }
+
+    },[user])
+
+    const renderMedias = (medias) => {
+        console.log(medias)
+        return medias.map((media) =>{
             return <UserMediaCard
                         key={media._id}
-                        id={media.id}
+                        id={media.id} 
                         name={media.title}
                         image={util.getImage(media.imagePath)}
                         mediaType={media.mediaType}
@@ -48,11 +76,7 @@ function MyList() {
 
 
 
-    useEffect(() => {
-        if(!user) {
-            navigate('/login')
-        }
-    },[user])
+    
 
     const setMedia = (status)=> {
         const list = medias.filter((media) =>{
@@ -80,6 +104,7 @@ function MyList() {
                 break;
             case 'all medias':
                 setUserListMedia(medias)
+                break;
             default:
                 setUserListMedia(medias)
 
@@ -97,7 +122,7 @@ function MyList() {
                 <button onClick={() => getMediaStatusList('dropped')}>Dropped</button>
                 <button onClick={() => getMediaStatusList('plan to watch')}>Plan to watch</button>
             </div>
-            {renderMedias()}
+            {userListMedia.length > 0 ? renderMedias(userListMedia) : renderMedias(medias)}
         </>
     )
 }
