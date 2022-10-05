@@ -75,7 +75,7 @@ function Info() {
                     {(genres) ? (getGenres(genres.mediaGenreList)) : null}
 
                     <div className="media-score-container">
-                        <p>{vote_average}</p>
+                        <p>{vote_average} User Score</p>
                         <AddMediaForm title={title || name} poster_path={poster_path} media_type={media_type}/>
                     </div>
                     <div className="media-overview-container">

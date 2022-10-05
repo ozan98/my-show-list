@@ -24,6 +24,8 @@ const setShows = asyncHandler(async (req, res) => {
     // Check if title already exist in db
     const titleExist = await Show.findOne({ title })
 
+
+
     if(titleExist) {
         res.status(400)
         throw new Error('Show already exist')

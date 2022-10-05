@@ -1,3 +1,5 @@
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {addMedia} from '../features/media/mediaSlice'
@@ -7,12 +9,11 @@ function AddMediaForm({title, poster_path, media_type}){
     const dispatch = useDispatch()
 
     const [formData, setFormData] = useState({
-        name: '',
-        scoreStr: 0,
-        status: ''
+        score: 'Select Score',
+        status: 'choose status'
     })
 
-    const {scoreStr, status} = formData
+    const {score, status} = formData
 
     const onChange = (e) => {
         setFormData((prevData)=> {
@@ -25,7 +26,21 @@ function AddMediaForm({title, poster_path, media_type}){
 
     const onSubmit = (e) => {
         e.preventDefault()
-        const score = parseInt(scoreStr)
+        
+        // Check valid status input
+        if(formData.status === 'choose status') {
+            toast.error('Please select a status', {
+                position: toast.POSITION.TOP_CENTER,
+            })
+        }
+
+        // Check valid score input
+        if(formData.score === 'Select Score'){
+            toast.error('Please select a score', {
+                position: 'top-center'
+            })
+        }
+        
         const data = {
             title: title,
             imagePath: poster_path,
@@ -34,7 +49,6 @@ function AddMediaForm({title, poster_path, media_type}){
             status: status
         }
         dispatch(addMedia(data))
-        console.log(data)
     }
 
 
@@ -42,16 +56,23 @@ function AddMediaForm({title, poster_path, media_type}){
     return (
         <>
         <form onSubmit={onSubmit}>
-            
-            <input 
-                type="number"
-                name="scoreStr"
-                id="score"
-                value={scoreStr}
-                placeholder="score of media"
-                onChange={onChange}
-             />
+             <select name="score" id="score" onChange={onChange}>
+                 <option>Select Score</option>
+                 <option>No Score</option>
+                 <option>(10) Masterpiece</option>
+                 <option>(9) Great</option>
+                 <option>(8) Very Good</option>
+                 <option>(7) Good</option>
+                 <option>(6) Fine</option>
+                 <option>(5) Avarage</option>
+                 <option>(4) Bad</option>
+                 <option>(3) Very Bad</option>
+                 <option>(2) Horrible</option>
+                 <option>(1) Appalling</option>
+             </select>
+
              <select name="status" id="status" onChange={onChange}>
+                 <option>choose status</option>
                  <option>currently watching</option>
                  <option>completed</option>
                  <option>on hold</option>
@@ -62,6 +83,7 @@ function AddMediaForm({title, poster_path, media_type}){
              <button type="submit">add media</button>
 
         </form>
+        <ToastContainer />
         </>
     )
 }
