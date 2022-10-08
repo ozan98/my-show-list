@@ -1,4 +1,5 @@
 function UserMediaCard({name, image, mediaType, score, status}) {
+    
     return (
         <div className="user-media-card">
             <img src={image}/>
