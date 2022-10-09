@@ -42,41 +42,75 @@ function MyList() {
     }
 
     const filterList = (list) => {
-        let filteredList = []
-        let nameFilteredList
-        let statusFilteredList
+        // let filteredList = []
+        // let nameFilteredList
+        // let statusFilteredList
 
-        nameFilteredList = medias.filter((media) => {
+        // nameFilteredList = medias.filter((media) => {
+        //     return media.title.toLowerCase().includes(mediaTitleFilter.toLowerCase())
+        // })
+
+        // if(typeFilter === 'tv' || typeFilter === 'movie'){
+        //     statusFilteredList = medias.filter((media) =>{
+        //         return ((media.status === mediaStatusFilter) && (media.mediaType === typeFilter))
+        //                 || (media.mediaType === typeFilter)
+        //     })
+        // }else {
+        //     statusFilteredList = medias.filter((media) =>{
+        //         return  (mediaStatusFilter === 'all') || (media.status === mediaStatusFilter)
+        //     })
+        // }
+        // console.log(mediaStatusFilter)
+        // console.log(nameFilteredList)
+
+        // for(let i = 0; i < statusFilteredList.length; i++){
+        //     for(let j = 0; j < nameFilteredList.length; j++) {
+        //         if(statusFilteredList[i].title === nameFilteredList[j].title){
+        //             filteredList.push(statusFilteredList[i])
+        //         }
+        //     }
+        // }
+        // console.log(filteredList)
+        
+        // return statusFilteredList
+        // return removeDuplicate(statusFilteredList, nameFilteredList)
+
+        let statusFilter = []
+        let filteredList = []
+        
+        let nameFilteredList = medias.filter((media) => {
             return media.title.toLowerCase().includes(mediaTitleFilter.toLowerCase())
         })
-
-        if(typeFilter === 'tv' || typeFilter === 'movie'){
-            statusFilteredList = nameFilteredList.filter((media) =>{
-                return ((media.status === mediaStatusFilter) && (media.mediaType === typeFilter))
-                        || (media.mediaType === typeFilter)
-            })
-        }else {
-            statusFilteredList = nameFilteredList.filter((media) =>{
-                return  (mediaStatusFilter === 'all') || (media.status === mediaStatusFilter)
-            })
-        }
-        console.log(mediaStatusFilter)
-        console.log(nameFilteredList)
-
-        for(let i = 0; i < statusFilteredList.length; i++){
-            for(let j = 0; j < nameFilteredList.length; j++) {
-                if(statusFilteredList[i].title === nameFilteredList[j].title){
-                    filteredList.push(statusFilteredList[i])
-                }
+        
+        for(let media of nameFilteredList ) {
+            if(typeFilter === 'all' && mediaStatusFilter === 'all') {
+                statusFilter.push(media)
+            } 
+            if(typeFilter === 'all' && media.status === mediaStatusFilter){
+                statusFilter.push(media)
+            }
+            if(media.mediaType === typeFilter && media.status === mediaStatusFilter){
+                statusFilter.push(media)
+            }
+            if(media.mediaType === typeFilter && mediaStatusFilter === 'all'){
+                statusFilter.push(media)
             }
         }
-        console.log(filteredList)
-        
-        return statusFilteredList
 
-        
+        // for(let i = 0; i < statusFilteredList.length; i++){
+        //     for(let j = 0; j < nameFilteredList.length; j++) {
+        //         if(statusFilteredList[i].title === nameFilteredList[j].title){
+        //             filteredList.push(statusFilteredList[i])
+        //         }
+        //     }
+        // }
 
-        // return removeDuplicate(statusFilteredList, nameFilteredList)
+
+
+
+        return statusFilter
+
+
     }
 
     const removeDuplicate = (arr1, arr2) => {
@@ -93,16 +127,16 @@ function MyList() {
         console.log('list')
 
         for(let i = 0; i < list.length; i++) {
-            if(!map[list[i].title]) {
+            if(map[list[i].title]) {
                 filteredList.push(list[i])
             }
             map[list[i].title] = i
         }
-        // console.log(list)
-        // console.log('list')
-        // console.log(filteredList)
-        // console.log('filtered')
-        // console.log(map)
+        console.log(list)
+        console.log('list')
+        console.log(filteredList)
+        console.log('filtered')
+        console.log(map)
         
 
          return filteredList
