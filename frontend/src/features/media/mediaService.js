@@ -25,9 +25,23 @@ const getAllMedia = async (token) => {
     return response.data
 }
 
+// Delete media
+const deleteMedia = async (mediaId, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    }
+    console.log(mediaId)
+    const response = await axios.delete(API_URL + mediaId, config)
+
+    return response.data
+}
+
 const mediaService = {
     addMedia,
     getAllMedia,
+    deleteMedia,
 }
 
 export default mediaService

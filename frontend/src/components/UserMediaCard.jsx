@@ -1,12 +1,52 @@
-function UserMediaCard({name, image, mediaType, score, status}) {
+import {useState} from 'react'
+import EditMediaForm from './EditMediaForm'
+import {useDispatch} from 'react-redux'
+import {deleteMedia} from '../features/media/mediaSlice'
+
+function UserMediaCard({id, title, imagePath, mediaType, score, status, selectToEdit}) {
+
+    const dispatch = useDispatch()
+
+    const [isSelected, setIsSelected] = useState(false) 
+    
+
+    const cancelEdit = () => {
+        setIsSelected(false)
+    }
+    
+    const removeMedia = (id) => {
+        console.log(id)
+        setIsSelected(false)
+        dispatch(deleteMedia(id))
+    }
+
+    const renderEditButton = () => {
+        return (
+            <button onClick={() => setIsSelected(true)}>Edit</button>
+        )
+    }
+
+    const renderEditForm = () => {
+        return (
+            <EditMediaForm
+                        id={id}
+                        title={title}
+                        imagePath={imagePath}
+                        mediaType={mediaType}
+                        cancelEdit={cancelEdit}
+                        removeMedia={removeMedia}
+            />
+        )
+    }
     
     return (
         <div className="user-media-card">
-            <img src={image}/>
-            <p>{name}</p>
+            <img src={imagePath}/>
+            <p>{title}</p>
             <p>{mediaType}</p>
             <p>{score}</p>
             <p>{status}</p>
+            {(isSelected) ? (renderEditForm()) : (renderEditButton())}
         </div>
     )
 }

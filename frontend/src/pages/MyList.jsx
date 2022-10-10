@@ -31,118 +31,46 @@ function MyList() {
         return filteredList.map((media) =>{
             return <UserMediaCard
                         key={media._id}
-                        id={media.id} 
+                        id={media._id} 
                         name={media.title}
-                        image={util.getImage(media.imagePath)}
+                        imagePath={util.getImage(media.imagePath)}
                         mediaType={media.mediaType}
                         score={media.score}
                         status={media.status}
+                        selectToEdit={selectToEdit}
                     />
         })
     }
 
     const filterList = (list) => {
-        // let filteredList = []
-        // let nameFilteredList
-        // let statusFilteredList
 
-        // nameFilteredList = medias.filter((media) => {
-        //     return media.title.toLowerCase().includes(mediaTitleFilter.toLowerCase())
-        // })
-
-        // if(typeFilter === 'tv' || typeFilter === 'movie'){
-        //     statusFilteredList = medias.filter((media) =>{
-        //         return ((media.status === mediaStatusFilter) && (media.mediaType === typeFilter))
-        //                 || (media.mediaType === typeFilter)
-        //     })
-        // }else {
-        //     statusFilteredList = medias.filter((media) =>{
-        //         return  (mediaStatusFilter === 'all') || (media.status === mediaStatusFilter)
-        //     })
-        // }
-        // console.log(mediaStatusFilter)
-        // console.log(nameFilteredList)
-
-        // for(let i = 0; i < statusFilteredList.length; i++){
-        //     for(let j = 0; j < nameFilteredList.length; j++) {
-        //         if(statusFilteredList[i].title === nameFilteredList[j].title){
-        //             filteredList.push(statusFilteredList[i])
-        //         }
-        //     }
-        // }
-        // console.log(filteredList)
-        
-        // return statusFilteredList
-        // return removeDuplicate(statusFilteredList, nameFilteredList)
-
-        let statusFilter = []
         let filteredList = []
         
-        let nameFilteredList = medias.filter((media) => {
+        let nameFilteredList = list.filter((media) => {
             return media.title.toLowerCase().includes(mediaTitleFilter.toLowerCase())
         })
         
         for(let media of nameFilteredList ) {
             if(typeFilter === 'all' && mediaStatusFilter === 'all') {
-                statusFilter.push(media)
+                filteredList.push(media)
             } 
             if(typeFilter === 'all' && media.status === mediaStatusFilter){
-                statusFilter.push(media)
+                filteredList.push(media)
             }
             if(media.mediaType === typeFilter && media.status === mediaStatusFilter){
-                statusFilter.push(media)
+                filteredList.push(media)
             }
             if(media.mediaType === typeFilter && mediaStatusFilter === 'all'){
-                statusFilter.push(media)
+                filteredList.push(media)
             }
         }
 
-        // for(let i = 0; i < statusFilteredList.length; i++){
-        //     for(let j = 0; j < nameFilteredList.length; j++) {
-        //         if(statusFilteredList[i].title === nameFilteredList[j].title){
-        //             filteredList.push(statusFilteredList[i])
-        //         }
-        //     }
-        // }
-
-
-
-
-        return statusFilter
-
-
+        return filteredList
     }
 
-    const removeDuplicate = (arr1, arr2) => {
-        // console.log(arr1Map)
-        const list = arr1.concat(arr2)
-        const filteredList = []
-        const map = {}
-
-        console.log(arr1)
-        console.log('arr1')
-        console.log(arr2)
-        console.log('arr2')
-        console.log(list)
-        console.log('list')
-
-        for(let i = 0; i < list.length; i++) {
-            if(map[list[i].title]) {
-                filteredList.push(list[i])
-            }
-            map[list[i].title] = i
-        }
-        console.log(list)
-        console.log('list')
-        console.log(filteredList)
-        console.log('filtered')
-        console.log(map)
-        
-
-         return filteredList
+    const selectToEdit = (id) => {
+        console.log(id)
     }
-
-    
 
 
     return (
