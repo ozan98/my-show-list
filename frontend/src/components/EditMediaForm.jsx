@@ -1,12 +1,9 @@
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import {useState} from 'react'
-import {useDispatch} from 'react-redux'
-import {addMedia} from '../features/media/mediaSlice'
 
 
-function EditMediaForm({id, title, poster_path, media_type, cancelEdit, removeMedia}){
-    const dispatch = useDispatch()
+function EditMediaForm({id, title, poster_path, media_type, cancelEdit, removeMedia, edit}){
 
     const [formData, setFormData] = useState({
         score: 'Select Score',
@@ -42,13 +39,14 @@ function EditMediaForm({id, title, poster_path, media_type, cancelEdit, removeMe
         }
         
         const data = {
+            _id: id,
             title: title,
             imagePath: poster_path,
             mediaType: media_type,
             score: score,
             status: status
         }
-        dispatch(addMedia(data))
+        edit(data)
     }
 
 
@@ -82,8 +80,8 @@ function EditMediaForm({id, title, poster_path, media_type, cancelEdit, removeMe
 
              <button type="submit">Apply Chnages</button>
         </form>
-        <button onClick={() => cancelEdit()}>Cancel Edit</button>
         <button onClick={() => removeMedia(id)}>Delete Media</button>
+        <button onClick={() => cancelEdit()}>Cancel Edit</button>
         <ToastContainer />
         </>
     )

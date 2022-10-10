@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import EditMediaForm from './EditMediaForm'
 import {useDispatch} from 'react-redux'
-import {deleteMedia} from '../features/media/mediaSlice'
+import {deleteMedia, editMedia} from '../features/media/mediaSlice'
 
 function UserMediaCard({id, title, imagePath, mediaType, score, status, selectToEdit}) {
 
@@ -15,9 +15,13 @@ function UserMediaCard({id, title, imagePath, mediaType, score, status, selectTo
     }
     
     const removeMedia = (id) => {
-        console.log(id)
         setIsSelected(false)
         dispatch(deleteMedia(id))
+    }
+
+    const edit = (media) => {
+        setIsSelected(false)
+        dispatch(editMedia(media))
     }
 
     const renderEditButton = () => {
@@ -35,6 +39,7 @@ function UserMediaCard({id, title, imagePath, mediaType, score, status, selectTo
                         mediaType={mediaType}
                         cancelEdit={cancelEdit}
                         removeMedia={removeMedia}
+                        edit={edit}
             />
         )
     }

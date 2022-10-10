@@ -95,7 +95,7 @@ function MyList() {
                 <button onClick={() => setMediaStatusFilter('dropped')}>Dropped</button>
                 <button onClick={() => setMediaStatusFilter('plan to watch')}>Plan To Watch</button>
             </div>
-            {renderMedias(medias)}
+            {(medias) ? (renderMedias(medias)) : null}
         </>
     )
 }

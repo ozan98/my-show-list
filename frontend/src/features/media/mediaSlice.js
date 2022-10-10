@@ -36,6 +36,18 @@ export const deleteMedia = createAsyncThunk('media/delete', async (mediaId, thun
     }
 })
 
+export const editMedia = createAsyncThunk('media/edit', async (mediaData, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        return await mediaService.editMedia(mediaData, token)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) ||
+                        error.message || error.toString()
+        
+        return thunkAPI.rejectWithValue(message) 
+    }
+})
+
 // Get all media thunk function
 export const getAllMedia = createAsyncThunk('media/getAll', async (_, thunkAPI) => {
     try {
@@ -94,6 +106,23 @@ export const mediaSlice = createSlice({
             state.medias = state.medias.filter((media) => media._id !== action.payload.id)
         })
         .addCase(deleteMedia.rejected, (state, action) => {
+            state.isLoadingMedia = false
+            state.isErrorMedia = true
+            state.messageMedia = action.payload
+        })
+        .addCase(editMedia.pending, (state) => {
+            state.isLoadingMedia = true
+        })
+        .addCase(editMedia.fulfilled, (state, action) => {
+            state.isLoadingMedia = false
+            state.isSuccessMedia = true
+            state.medias = state.medias.map((media) => {
+                return (media._id === action.payload._id) ?
+                        (media = action.payload) : (media)
+
+            })
+        })
+        .addCase(editMedia.rejected, (state, action) => {
             state.isLoadingMedia = false
             state.isErrorMedia = true
             state.messageMedia = action.payload

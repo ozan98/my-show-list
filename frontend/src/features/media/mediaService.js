@@ -32,8 +32,19 @@ const deleteMedia = async (mediaId, token) => {
             Authorization: `Bearer ${token}`
         },
     }
-    console.log(mediaId)
     const response = await axios.delete(API_URL + mediaId, config)
+
+    return response.data
+}
+
+const editMedia = async (mediaData, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.put(API_URL + mediaData._id, mediaData, config)
 
     return response.data
 }
@@ -42,6 +53,7 @@ const mediaService = {
     addMedia,
     getAllMedia,
     deleteMedia,
+    editMedia,
 }
 
 export default mediaService
