@@ -1,3 +1,5 @@
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import {useState} from 'react'
 import EditMediaForm from './EditMediaForm'
 import {useDispatch} from 'react-redux'
@@ -52,6 +54,7 @@ function UserMediaCard({id, title, imagePath, mediaType, score, status, selectTo
             <p>{score}</p>
             <p>{status}</p>
             {(isSelected) ? (renderEditForm()) : (renderEditButton())}
+            <ToastContainer/>
         </div>
     )
 }

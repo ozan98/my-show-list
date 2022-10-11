@@ -27,7 +27,7 @@ function EditMediaForm({id, title, poster_path, media_type, cancelEdit, removeMe
         // Check valid status input
         if(formData.status === 'choose status') {
             toast.error('Please select a status', {
-                position: toast.POSITION.TOP_CENTER,
+                position: 'top-center',
             })
         }
 
@@ -54,6 +54,7 @@ function EditMediaForm({id, title, poster_path, media_type, cancelEdit, removeMe
     return (
         <>
         <form onSubmit={onSubmit}>
+            <label>Select Score</label>
              <select name="score" id="score" onChange={onChange}>
                  <option>Select Score</option>
                  <option>No Score</option>
@@ -68,9 +69,9 @@ function EditMediaForm({id, title, poster_path, media_type, cancelEdit, removeMe
                  <option>(2) Horrible</option>
                  <option>(1) Appalling</option>
              </select>
-
+            <label>Select Status:</label>
              <select name="status" id="status" onChange={onChange}>
-                 <option>choose status</option>
+                 <option>select status</option>
                  <option>currently watching</option>
                  <option>completed</option>
                  <option>on hold</option>
@@ -78,7 +79,7 @@ function EditMediaForm({id, title, poster_path, media_type, cancelEdit, removeMe
                  <option>plan to watch</option>
              </select>
 
-             <button type="submit">Apply Chnages</button>
+             <button type="submit">Apply Changes</button>
         </form>
         <button onClick={() => removeMedia(id)}>Delete Media</button>
         <button onClick={() => cancelEdit()}>Cancel Edit</button>
