@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const API_KEY = '?api_key=1875d71dd67886cbbc594f365f9bfed7'
+// const API_KEY = '?api_key=1875d71dd67886cbbc594f365f9bfed7'
+const API_KEY = process.env.REACT_APP_TMDB_KEY
 
 const BASE_URL = 'https://api.themoviedb.org/3/'
 const SEARCH_BASE_URL = 'https://api.themoviedb.org/3/search/multi'

@@ -19,39 +19,6 @@ function Header() {
     }
 
     return (
-        // <header className="header">
-        //     <div className="logo">
-        //         <Link to="/">My Show List</Link>
-        //     </div>
-
-        //     <div>
-        //         <Link to="/mylist">My List</Link>
-        //     </div>
-
-        //     <div>
-        //         <Link to="/discover">Discover</Link>
-        //     </div>
-
-        //     {!user ? 
-        //     (
-        //         <>
-        //         <div>
-        //             <Link to="/login">Login</Link>
-        //         </div>
-
-        //         <div>
-        //             <Link to="/register">Register</Link>
-        //         </div>
-        //         </>
-        //     ) 
-        //     : 
-        //     (
-        //         <div>
-        //             <button onClick={onLogout}>Logout</button>
-        //         </div>
-        //     )
-        //     }
-        // </header>
         <header className="header">
             <div className="logo">
                 <Link to="/"> My Show List</Link>
