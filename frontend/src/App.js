@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Header from './components/Header'
+import NavBar from './components/NavBar'
 import Discover from './pages/Discover'
 import MyList from './pages/MyList'
 import Login from './pages/Login'
@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <Router>
-        <Header />
+        <NavBar />
         <div className="page-container">
           <Routes>
             <Route path='/' element={<LandingPage />} />

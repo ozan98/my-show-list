@@ -5,7 +5,7 @@ import {logout, reset} from '../features/auth/authSlice'
 import {resetMedia} from '../features/media/mediaSlice'
 
 
-function Header() {
+function NavBar() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     
@@ -19,43 +19,48 @@ function Header() {
     }
 
     return (
-        <header className="header">
-            <div className="logo">
-                <Link to="/"> My Show List</Link>
-            </div>
-
+            <>
             <nav>
-                <ul className="nav-links">
-                    <li>
-                        <Link to="/mylist">My List</Link>
-                    </li>
-                    <li>
-                        <Link to="/discover">Discover</Link>
-                    </li>
-                </ul>
-            </nav>
-            <div className="user-in-out">
-            {user ? (
+            <div className="navbar-container">
+                <div>
+                    <Link className="logo" to="/"> My Show List</Link>
+                </div>
+
+                <div className="menu">
+                    <Link className="link" to="/mylist">My List</Link>
+                    <Link className="link"  to="/discover">Discover</Link>
+                    {user ? (
                         <>
-                            <button className="logout-button" onClick={onLogout}>
+                            <div className="link" onClick={onLogout}>
                                 <FaSignOutAlt />Logout
-                            </button>
+                            </div>
                         </>
                     ) :
                     (
                         <>
-                            <Link to="/login">
+                            <Link className="link"  to="/login">
                                 <FaSignInAlt /> Login
                             </Link>
 
-                            <Link to="/register">
+                            <Link className="link"  to="/register">
                                 <FaUser /> Register
                             </Link>
                         </>
                     )}
+                </div>
+    
+
+            <div className="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </header>
+            
+            </div>
+            </nav>
+            
+            </>
     )
 }
 
-export default Header
+export default NavBar

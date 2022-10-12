@@ -1,5 +1,10 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap'); */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500');
+
+:root{
+    --primary: #8c83ff;
+    --light: #EEEEEE;
+    --dark: #212121;
+}
 
 * {
     margin: 0;
@@ -9,66 +14,16 @@
 }
 
 body {
-    /* font-family: 'Poppings', sans-serif; */
     font-family: "Montserrat", sans-serif;
-    color: hsl(210, 100%, 87%);
-    background-color: #24252A;
+    /* color: hsl(210, 100%, 87%); */
+    /* background-color: #24252A; */
     height: 100vh;
-    /* background: linear-gradient(to right, hsl(210, 100%, 8%), hsl(210, 100%, 16%)); */
 }
 
-.header li, 
-.header a, 
-.header button {
-    font-weight: 500;
-    font-size: 16px;
-    color: #edf0fa;
-    text-decoration: none;
-}
-
-header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 30px 10%;
-    margin-bottom: 50px;
-    background-color: #141417;
-}
-
-.logo {
-    cursor: pointer;
-    margin-right: auto;
-}
-
-.nav-links {
-    list-style: none;
-}
-
-.nav-links li {
-    /* side by side */
-    display: inline-block;
-    padding: 0px 20px;
-}
-
-.nav-links li a {
-    transition: all 0.3s ease 0s;
-}
-
-.nav-links li a:hover {
-    color: #0088a9;
-}
-
-.user-in-out a {
+/* .user-in-out a {
     padding-left: 10px;
-}
+} */
 
-.logout-button {
-    padding: 9px 25px;
-    background-color: rgba(0, 136, 169, 1);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-}
 
 button {
     border: none;
@@ -140,9 +95,7 @@ h3 {
 
     
 }
-.header {
-    display: flex;
-}
+
 
 .btn {
     padding: 10px 20px;
@@ -247,11 +200,6 @@ img {
     /* gap: 1px; */
 }
 
-.media-description-container {
-}
-
-.media-overview-container {
-}
 
 @media (max-width: 600px) {
     .form{
