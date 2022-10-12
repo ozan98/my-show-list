@@ -74,10 +74,7 @@ function NavBar() {
             
             </div>
             </nav>
-
-
-
-
+            
             <nav className={`mobile-nav ${mobileMenuToggle === true ? "mobile-nav-active" : ""}`}>
                     <Link className="mobile-link" onClick={() => setMobileToggle(false)} to="/mylist">My List</Link>
                     <Link className="mobile-link" onClick={() => setMobileToggle(false)} to="/discover">Discover</Link>
