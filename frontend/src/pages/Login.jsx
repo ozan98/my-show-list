@@ -51,15 +51,15 @@ function Login() {
     }
 
     return (
-        <>  <div className="container">
+          <div className="loginregister-container">
                 <section className="heading">
                     <h1><FaSignInAlt />Login</h1>
-                    <p>Login and start managing your show list</p>
+                    <p>Welcome Back</p>
                 </section>
 
-                <section className="form">
+                <section>
                     <form onSubmit={onSubmit}>
-                        <div className="form-group">
+                        <div>
                             <input 
                                 type="email"
                                 id="email"
@@ -70,7 +70,7 @@ function Login() {
                             />
                         </div>
 
-                        <div className="form-group">
+                        <div>
                             <input 
                                 type="password"
                                 id="password"
@@ -80,13 +80,12 @@ function Login() {
                                 onChange={onChange}
                             />
                         </div>
-                        <div className="form-group">
-                            <button className="btn btn-block" type="submit">Submit</button>
+                        <div>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </section>
             </div>
-        </>
     )
 }
 

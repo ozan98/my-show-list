@@ -59,7 +59,7 @@ function Register() {
 
     return (
         <>
-            <div className="container">
+            <div className="loginregister-container">
                 <section className="heading">
                     <h1><FaUser />Register</h1>
                     <p>Please create an account</p>

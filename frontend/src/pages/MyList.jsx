@@ -74,7 +74,7 @@ function MyList() {
 
 
     return (
-        <>
+        <div className="page-container">
             <h1>My List</h1>
             <div className="my-list-buttons">
                 <button onClick={() => setTypeFilter('all')}>All Media</button>
@@ -96,7 +96,7 @@ function MyList() {
                 <button onClick={() => setMediaStatusFilter('plan to watch')}>Plan To Watch</button>
             </div>
             {(medias) ? (renderMedias(medias)) : null}
-        </>
+        </div>
     )
 }
 

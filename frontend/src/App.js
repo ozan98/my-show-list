@@ -16,7 +16,6 @@ function App() {
     <>
       <Router>
         <NavBar />
-        <div className="page-container">
           <Routes>
             <Route path='/' element={<LandingPage />} />
             <Route path='/mylist' element={<MyList />} />
@@ -26,7 +25,6 @@ function App() {
             <Route path='/info' element={<Info />} />
             <Route path='/searchpage' element={<SearchListPage />} />
           </Routes>
-        </div>
       </Router>
     </>
   );

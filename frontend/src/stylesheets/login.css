@@ -1,0 +1,41 @@
+@import './index.css';
+
+.loginregister-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 120px auto;
+    padding: 100px 20px;
+    background-color: var(--light);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.heading {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--font-dark);
+    margin-bottom: 50px;
+}
+
+form input {
+    width: 100%;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--font-dark);
+
+
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--dark);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 10px;
+}

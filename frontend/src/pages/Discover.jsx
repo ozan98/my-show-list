@@ -58,7 +58,7 @@ function Discover() {
     }
 
     return (
-        <>
+        <div className="page-container">
             <section className="search-section">
                 <SearchForm />
             </section>
@@ -72,7 +72,7 @@ function Discover() {
                     {getTrendingMedia(trendingTvs.slice(0, 6))}
                 </div>
             </section>
-        </>
+        </div>
     )
 }
 

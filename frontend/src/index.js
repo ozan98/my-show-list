@@ -5,7 +5,8 @@ import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './stylesheets/index.css';
-import './stylesheets/navBar.css'
+import './stylesheets/navBar.css';
+import './stylesheets/login.css'
 
 const container = document.getElementById('root');
 const root = createRoot(container);
