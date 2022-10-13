@@ -27,11 +27,6 @@ body {
     height: 100vh;
 }
 
-/* .user-in-out a {
-    padding-left: 10px;
-} */
-
-
 button {
     border: none;
     cursor: pointer;
@@ -44,12 +39,12 @@ i {
 }
 
 
-h1,
+/* h1,
 h2,
 h3 {
   font-weight: 600;
   margin-bottom: 10px;
-}
+} */
 
 /* .heading {
     font-size: 2rem;
@@ -103,28 +98,6 @@ h3 {
 
     
 }
-
-
-/* .btn {
-    padding: 10px 20px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    background: #000;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    text-align: center;
-    appearance: button;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
-
-/* .btn-block {
-    width: 100%;
-    margin-bottom: 20px;
-} */
 
 .trending-section {
     width: 100%;
@@ -183,20 +156,11 @@ img {
 
 /*myList */
 .my-list-buttons {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+ 
 }
 
 .my-list-buttons > button {
-    background-color: rgba(0, 136, 169, 1);
-    padding: 10px 30px;
-    border-radius: 25px;
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
+
 }
 
 /* info */

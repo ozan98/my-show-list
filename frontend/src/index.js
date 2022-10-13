@@ -1,15 +1,16 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import './stylesheets/index.css';
-import './stylesheets/navBar.css';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { Provider } from 'react-redux'
+import { store } from './app/store'
+import App from './App'
+import reportWebVitals from './reportWebVitals'
+import './stylesheets/index.css'
+import './stylesheets/navBar.css'
 import './stylesheets/login.css'
+import './stylesheets/mylist.css'
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+const container = document.getElementById('root')
+const root = createRoot(container)
 
 root.render(
   <React.StrictMode>
