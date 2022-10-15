@@ -58,7 +58,7 @@ function Login() {
                 </section>
 
                 <section>
-                    <form onSubmit={onSubmit}>
+                    <form className="log-form" onSubmit={onSubmit}>
                         <div>
                             <input 
                                 type="email"
