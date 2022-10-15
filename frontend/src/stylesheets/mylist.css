@@ -11,17 +11,33 @@
     background-color: var(--dark);
     position: fixed;
     top: 0;
-    left: 0;
+    right: 100%;
     width: 35%;
     height: 100vh;
     z-index: 98;
 
     display: block;
     padding-top: 120px;
+    transition: 0.4s;
 }
 
+.mobileX-btn {
+    display: flex;
+    margin-left: auto;
+}
+
+.mobileX-btn {
+    padding: 10px 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    border: none;
+    background-color: var(--primary);
+    color: var(--light)
+}
+
+
 .mobile-container-active {
-    left: 100%;
+    right: 65%;
 }
 
 .type-button{
@@ -66,6 +82,28 @@
     width: 100%;
 }
 
+.type-active {
+    background-color: var(--primary);
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 12px;
+}
+
+.options button {
+    border: none;
+    padding: 5px 16px;
+    background-color: var(--primary);
+    color: var(--light);
+    font-weight: 900;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
 .user-media-card {
     display: flex;
     color: var(--light);
@@ -98,6 +136,8 @@
     background-color: var(--primary);
     color: var(--light);
     border: none;
+    font-weight: 900;
+    cursor: pointer;
 }
 
 .user-media-card img {
@@ -106,7 +146,7 @@
 }
 
 @media (min-width: 768px) {
-    
+
     .mylist-container {
         width: 1200px;
     }

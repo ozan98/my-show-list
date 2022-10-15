@@ -17,6 +17,8 @@ function MyList() {
     const [mediaStatusFilter, setMediaStatusFilter] = useState('all')
     const [mediaTitleFilter, setMediaTitleFilter] = useState('')
 
+    const [mobileSlider, setMobileSlider] = useState(false);
+
 
     useEffect(() => {
         if(!user) {
@@ -24,7 +26,35 @@ function MyList() {
         }
         dispatch(getAllMedia())
 
+        return () => {
+            setMobileSlider(false)
+        }
+
     },[user, dispatch, navigate])
+
+    const toggleMobileSlide = () => {
+        if(mobileSlider === false) {
+            setMobileSlider(true)
+        } else {
+            setMobileSlider(false)
+        }
+    }
+
+    const typeToggle = (type) => {
+        if(type === typeFilter){
+            return true
+        }else {
+            return false
+        }
+    }
+
+    const statusToggle = (status) => {
+        if(status === mediaStatusFilter) {
+            return true
+        } else {
+            return false
+        }
+    }
 
     const renderMedias = (list) => {
         const filteredList = filterList(list)
@@ -76,19 +106,23 @@ function MyList() {
 
     return (
         <div className="mylist-container">
-            <div className="button-mobile-container mobile-container-active">
+            <div className="options">
+                <button onClick={toggleMobileSlide}>search</button>
+            </div>
+            <div className={`button-mobile-container ${(mobileSlider) ? "mobile-container-active" : "" }`}>
+                <button className="mobileX-btn" onClick={toggleMobileSlide}>X</button>
                 <div className="type-button">
-                    <div onClick={() => setTypeFilter('all')}>All Media</div>
-                    <div onClick={() => setTypeFilter('tv')}>Tv Shows</div>
-                    <div onClick={() => setTypeFilter('movie')}>Movies</div>
+                    <div className={(typeToggle('all'))? "type-active" : ""} onClick={() => setTypeFilter('all')}>All Media</div>
+                    <div className={(typeToggle('tv'))? "type-active" : ""} onClick={() => setTypeFilter('tv')}>Tv Shows</div>
+                    <div className={(typeToggle('movies'))? "type-active" : ""} onClick={() => setTypeFilter('movie')}>Movies</div>
                 </div>
                 <div className="status-button">
-                    <div className="is-active" onClick={()=> setMediaStatusFilter('all')}>All</div>
-                    <div onClick={() => setMediaStatusFilter('currently watching')}>Currently Watching</div>
-                    <div onClick={() => setMediaStatusFilter('completed')}>Completed</div>
-                    <div onClick={() => setMediaStatusFilter('on hold')}>On Hold</div>
-                    <div onClick={() => setMediaStatusFilter('dropped')}>Dropped</div>
-                    <div onClick={() => setMediaStatusFilter('plan to watch')}>Plan To Watch</div>
+                    <div className={(statusToggle('all')? "type-active" : "")} onClick={()=> setMediaStatusFilter('all')} >All</div>
+                    <div className={(statusToggle('currently watching')? "type-active" : "")} onClick={() => setMediaStatusFilter('currently watching')}>Currently Watching</div>
+                    <div className={(statusToggle('completed')? "type-active" : "")} onClick={() => setMediaStatusFilter('completed')}>Completed</div>
+                    <div className={(statusToggle('on hold')? "type-active" : "")} onClick={() => setMediaStatusFilter('on hold')}>On Hold</div>
+                    <div className={(statusToggle('completed')? "type-active" : "")} onClick={() => setMediaStatusFilter('dropped')}>Dropped</div>
+                    <div className={(statusToggle('plan to watch')? "type-active" : "")} onClick={() => setMediaStatusFilter('plan to watch')}>Plan To Watch</div>
                 </div>
                     <input 
                     className="search-bar"
@@ -98,7 +132,6 @@ function MyList() {
                     placeholder="Search media"
                     onChange={(e) => {setMediaTitleFilter(e.target.value)}} 
                     />
-                    <FaSearch className="search-icon"/>
                 
             </div>
 
