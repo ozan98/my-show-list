@@ -7,11 +7,17 @@
     --lighterPrimary: #838bff;
     --background: #c4bebe; */
 
-    --dark: #1D3A48;
+    /* --dark: #1D3A48;
     --light: #F3F8F9;
     --primary: #264858;
     --background: #42616F;
-    --font-dark: #366479;
+    --font-dark: #366479; */
+
+    --dark: #202020;
+    --primary: #373737;
+    --background: #181818;
+    --light: #fff;
+    --button-filter: #373737;
 }
 
 * {
@@ -27,11 +33,11 @@ body {
     height: 100vh;
 }
 
-button {
+/* button {
     border: none;
     cursor: pointer;
     text-decoration: none;
-}
+} */
 
 i {
     background-color: rgba(0, 136, 169, 1);
@@ -173,8 +179,8 @@ img {
 }
 
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
     .form{
         width: 90%;
     }
-}
+} */

@@ -1,0 +1,115 @@
+@import './index.css';
+
+.mylist-container {
+    margin-top: 70.9px;
+    width: 440px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.button-mobile-container {
+    background-color: var(--dark);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100vh;
+    z-index: 98;
+
+    display: block;
+    padding-top: 120px;
+}
+
+.mobile-container-active {
+    left: 100%;
+}
+
+.type-button{
+    margin-bottom: 90px
+}
+
+.type-button div {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 20px;
+    padding: 10px 16px;
+    text-decoration: none;
+    text-align: start;
+    color: var(--light);
+    cursor: pointer;
+    border-bottom: 1px solid var(--primary);
+    font-size: 12px
+}
+
+.status-button div {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 20px;
+    padding: 10px 16px;
+    text-decoration: none;
+    text-align: start;
+    color: var(--light);
+    cursor: pointer;
+    border-bottom: 1px solid var(--primary);
+    font-size: 12px
+}
+
+.type-button div:hover {
+    background-color: var(--primary);
+}
+
+.status-button div:hover {
+    background-color: var(--primary);
+}
+
+.search-bar {
+    width: 100%;
+}
+
+.user-media-card {
+    display: flex;
+    color: var(--light);
+    border-bottom: 1px solid var(--primary);
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.movie-info{
+    padding: 0 10px;
+}
+.movie-info p:nth-child(1){
+    font-weight: 900;
+}
+
+.movie-info p:nth-child(2),
+.movie-info p:nth-child(3),
+.movie-info p:nth-child(4) {
+    color: #757474;
+}
+
+.edit-btn {
+    margin-left: auto;
+}
+
+.edit-btn button {
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: var(--primary);
+    color: var(--light);
+    border: none;
+}
+
+.user-media-card img {
+    height: 150px;
+    width: 100px;
+}
+
+@media (min-width: 768px) {
+    
+    .mylist-container {
+        width: 1200px;
+    }
+}
+
+

@@ -1,5 +1,6 @@
 import util from '../util/util'
 import UserMediaCard from '../components/UserMediaCard'
+import {FaSearch} from 'react-icons/fa'
 import {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { useNavigate } from 'react-router'
@@ -32,7 +33,7 @@ function MyList() {
             return <UserMediaCard
                         key={media._id}
                         id={media._id} 
-                        name={media.title}
+                        title={media.title}
                         imagePath={util.getImage(media.imagePath)}
                         mediaType={media.mediaType}
                         score={media.score}
@@ -74,28 +75,39 @@ function MyList() {
 
 
     return (
-        <div className="page-container">
-            <h1>My List</h1>
-            <div className="my-list-buttons">
-                <button onClick={() => setTypeFilter('all')}>All Media</button>
-                <button onClick={() => setTypeFilter('tv')}>Tv Shows</button>
-                <button onClick={() => setTypeFilter('movie')}>Movies</button>
-                <input 
+        <div className="mylist-container">
+            <div className="button-mobile-container mobile-container-active">
+                <div className="type-button">
+                    <div onClick={() => setTypeFilter('all')}>All Media</div>
+                    <div onClick={() => setTypeFilter('tv')}>Tv Shows</div>
+                    <div onClick={() => setTypeFilter('movie')}>Movies</div>
+                </div>
+                <div className="status-button">
+                    <div className="is-active" onClick={()=> setMediaStatusFilter('all')}>All</div>
+                    <div onClick={() => setMediaStatusFilter('currently watching')}>Currently Watching</div>
+                    <div onClick={() => setMediaStatusFilter('completed')}>Completed</div>
+                    <div onClick={() => setMediaStatusFilter('on hold')}>On Hold</div>
+                    <div onClick={() => setMediaStatusFilter('dropped')}>Dropped</div>
+                    <div onClick={() => setMediaStatusFilter('plan to watch')}>Plan To Watch</div>
+                </div>
+                    <input 
+                    className="search-bar"
                     type="mediaTitleFilter" 
                     name="mediaTypeFilter" 
                     id="mediaTitleFilter"
+                    placeholder="Search media"
                     onChange={(e) => {setMediaTitleFilter(e.target.value)}} 
                     />
+                    <FaSearch className="search-icon"/>
+                
             </div>
-            <div className="my-list-buttons">
-                <button onClick={()=> setMediaStatusFilter('all')}>All medias</button>
-                <button onClick={() => setMediaStatusFilter('currently watching')}>Currently Watching</button>
-                <button onClick={() => setMediaStatusFilter('completed')}>Completed</button>
-                <button onClick={() => setMediaStatusFilter('on hold')}>On Hold</button>
-                <button onClick={() => setMediaStatusFilter('dropped')}>Dropped</button>
-                <button onClick={() => setMediaStatusFilter('plan to watch')}>Plan To Watch</button>
+
+            
+    
+            <div className="cards">
+                {(medias) ? (renderMedias(medias)) : null}
             </div>
-            {(medias) ? (renderMedias(medias)) : null}
+            
         </div>
     )
 }

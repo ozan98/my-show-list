@@ -49,11 +49,15 @@ function UserMediaCard({id, title, imagePath, mediaType, score, status, selectTo
     return (
         <div className="user-media-card">
             <img src={imagePath}/>
-            <p>{title}</p>
-            <p>{mediaType}</p>
-            <p>{score}</p>
-            <p>{status}</p>
-            {(isSelected) ? (renderEditForm()) : (renderEditButton())}
+            <div className="movie-info">
+                <p>{title}</p>
+                <p>{mediaType}</p>
+                <p>{score}</p>
+                <p>{status}</p>
+            </div>
+            <div className="edit-btn">
+                {(isSelected) ? (renderEditForm()) : (renderEditButton())}
+            </div>
             <ToastContainer/>
         </div>
     )
