@@ -8,6 +8,8 @@ import './stylesheets/index.css'
 import './stylesheets/navBar.css'
 import './stylesheets/login.css'
 import './stylesheets/mylist.css'
+import './stylesheets/discover.css'
+
 
 const container = document.getElementById('root')
 const root = createRoot(container)

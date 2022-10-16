@@ -1,0 +1,124 @@
+@import './index.css';
+
+.discover-container {
+    width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 120px;
+}
+
+
+.trending-movie-container{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 39%;
+    gap: 8px;
+    
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    margin-bottom: 70px;
+}
+
+.trending-tv-container{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 39%;
+    gap: 8px;
+    
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+
+.tag {
+    color: var(--light);
+    margin-right: auto;
+}
+
+.card-container {
+    border: 1px solid var(--primary);
+    color: var(--light);
+    /* width: 40%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.img-container {
+    margin-bottom: auto;
+
+}
+
+
+.card-container img {
+    width: 100%;
+    margin-bottom: auto;
+}
+
+.card-info {
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items:flex-start;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card-info p:nth-child(3){
+    color: #757474;
+}
+
+.search-panel-container {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-left: 2%;
+}
+
+.search-panel-container input {
+    font-size: 16px;
+    color: var(--primary);
+    font-weight: 900;
+    width: 60%;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 15px;
+}
+
+.search-panel-container button {
+    padding: 10px 30px;
+    margin-left: 5px;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: rgba(0, 136, 169, 1);
+    color: #edf0fa;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+.search-panel-container button {
+    padding: 10px 30px;
+    margin-left: 5px;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: var(--primary);
+    color: #edf0fa;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .discover-container {
+        width: 1200px;
+    }
+
+    .trending-movie-container{
+        grid-auto-columns: 15%;
+    }
+
+    .trending-tv-container {
+        grid-auto-columns: 15%
+    }
+}

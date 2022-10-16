@@ -46,32 +46,33 @@ function Discover() {
     
 
     const getTrendingMedia = (list) => {
-        return list.map((tv) => {
+        return list.map((media) => {
             return <ShowCard
-                        key={tv.id}
-                        id={tv.id}
-                        image={util.getImage(tv.poster_path)}
-                        score={tv.vote_average}
+                        key={media.id}
+                        id={media.id}
+                        title={media.name || media.title}
+                        image={util.getImage(media.poster_path)}
+                        score={media.vote_average}
+                        releaseDate={media.release_date}
                         checkMedia={selectMedia}
                     />
         })
     }
 
     return (
-        <div className="page-container">
+        <div className="discover-container">
             <section className="search-section">
                 <SearchForm />
             </section>
-
-            <section className="trending-section">
-                <div className="trending-movie-continer">
-                    {getTrendingMedia(trendingMovies.slice(0, 6))}
+                <h1 className="tag">Trending movies:</h1>
+                <div className="trending-movie-container">
+                    {getTrendingMedia(trendingMovies)}
                 </div>
 
-                <div className="trending-tv-continer">
-                    {getTrendingMedia(trendingTvs.slice(0, 6))}
+                <h1 className="tag">Trending Tv shows:</h1>
+                <div className="trending-tv-container">
+                    {getTrendingMedia(trendingTvs)}
                 </div>
-            </section>
         </div>
     )
 }

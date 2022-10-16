@@ -17,16 +17,13 @@ function SearchForm() {
 
     return (
         <div className="search-panel-container">
-            <div>
-                <h1>Welcome</h1>
-                <h2>Search through millions of movies and Tv shows </h2>
-            </div>
-            <form onSubmit={onSubmit}>
+            <form className="search-panel-form"onSubmit={onSubmit}>
                 <input 
                     type="text"
                     id="search"
                     name="search"
                     value={searchString}
+                    placeholder="Search media"
                     onChange={(e) => setSearchString(e.target.value)}
                 />
                 <button type="submit">Search</button>

@@ -1,14 +1,17 @@
 import React from 'react'
 
-function ShowCard({id, name, image, score, releaseDate, overView, checkMedia}) {
+function ShowCard({id, title, image, score, releaseDate, overView, checkMedia}) {
     return(
         <>
             <div className="card-container">
-                <img src={image} alt="" onClick={() => checkMedia(id)}/>
-                <p>{name || null}</p>
-                <p>{score}</p>
-                <p>{releaseDate || null}</p>
-                <p>{overView || null}</p>
+                <div className="img-container">
+                    <img src={image} alt="" onClick={() => checkMedia(id)}/>
+                </div>
+                <div className="card-info">
+                    <p>{`${score} / 10`}</p>
+                    <p>{title}</p>
+                    <p>{releaseDate}</p>
+                </div>
             </div>
         </>
     )
