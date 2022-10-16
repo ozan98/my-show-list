@@ -9,6 +9,8 @@ import './stylesheets/navBar.css'
 import './stylesheets/login.css'
 import './stylesheets/mylist.css'
 import './stylesheets/discover.css'
+import './stylesheets/info.css'
+
 
 
 const container = document.getElementById('root')

@@ -4,6 +4,7 @@ import AddMediaForm from '../components/AddMediaForm'
 import {useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {addMedia} from '../features/media/mediaSlice'
+import {useState} from 'react'
 
 import {useEffect} from 'react'
 
@@ -15,16 +16,20 @@ function Info() {
     const {currentChecking} = useSelector((state) => state.tmdb)
     const {user} = useSelector((state) => state.auth)
 
+    const [selectAdd, setSelectAdd] = useState(false)
+
     const {id, 
         title,
         name,
         poster_path, 
         vote_average, 
         release_date, 
-        overview, 
+        overview,
+        popularity,
         genres, 
         creditData,
         media_type,
+        first_air_date,
         } = currentChecking
     
     useEffect(() => {
@@ -33,15 +38,13 @@ function Info() {
         }
     },[user])
 
-    const addMediaHandler = () => {
-        const mediaData = {
-            title: title || name,
-            imagePath: poster_path,
-            mediaType: !title ? 'tv' : 'movie',
-            score: 5,
-            status: 'started'
-        }
-        dispatch(addMedia(mediaData))
+    const renderAddForm = () => {
+        return <AddMediaForm title={title || name} poster_path={poster_path} media_type={media_type} toggleSelect={setSelectAdd}/>
+
+    }
+
+    const renderAddButton = () => {
+        return <button onClick={() => setSelectAdd(true)}>Add Media</button>
     }
 
     const getGenres = (genreList) => {
@@ -66,25 +69,40 @@ function Info() {
         <>
             
             <div className="media-info-container">
-                <div className="media-description-container">
+
+                <div className="media-img-container">
                     <img src={util.getImage(poster_path)} alt="movieInfo" />
-                </div>
-                <div className="media-title-container">
-                    <h1>{title || name}</h1>
-                    <p>{release_date}</p>
-                    {(genres) ? (getGenres(genres.mediaGenreList)) : null}
 
                     <div className="media-score-container">
-                        <p>{vote_average} User Score</p>
-                        <AddMediaForm title={title || name} poster_path={poster_path} media_type={media_type}/>
+                        <p>Score</p>
+                        <p>{Math.floor(vote_average)} / 10</p>
+                        <p>Popularity</p>
+                        <p>{popularity}</p>
+                        <p>Media Type</p>
+                        <p>{media_type}</p>
+
+                        {(selectAdd)? renderAddForm() : renderAddButton()}
                     </div>
+                </div>
+
+                <div className="media-title-container">
+                    <div className="media-description-container">
+                        <h1>{title || name}</h1>
+                        <p className="release-date">{release_date || first_air_date}</p>
+                        <div className="genres">
+                            {(genres) ? (getGenres(genres.mediaGenreList)) : null}
+                        </div>
+                    </div>
+        
                     <div className="media-overview-container">
                         <p>{overview}</p>
                     </div>
+                    <p className="label">Top paid actors:</p>
                     <div className="media-cast-container">
-                        {creditData ? getCast(creditData.cast.slice(0,15)) : null}
+                        {creditData ? getCast(creditData.cast.slice(0,10)) : null}
                     </div>
                 </div>
+
             </div>
         </>
     )

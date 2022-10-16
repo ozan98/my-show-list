@@ -123,7 +123,7 @@
 .movie-info p:nth-child(2),
 .movie-info p:nth-child(3),
 .movie-info p:nth-child(4) {
-    color: #757474;
+    color: var(--fade);
 }
 
 .edit-btn {

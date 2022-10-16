@@ -1,3 +1,4 @@
+import util from '../util/util'
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import {useState} from 'react'
@@ -5,7 +6,7 @@ import {useDispatch} from 'react-redux'
 import {addMedia} from '../features/media/mediaSlice'
 
 
-function AddMediaForm({title, poster_path, media_type}){
+function AddMediaForm({title, poster_path, media_type, toggleSelect}){
     const dispatch = useDispatch()
 
     const [formData, setFormData] = useState({
@@ -55,35 +56,41 @@ function AddMediaForm({title, poster_path, media_type}){
 
     return (
         <>
-        <form onSubmit={onSubmit}>
-             <select name="score" id="score" onChange={onChange}>
-                 <option>Select Score</option>
-                 <option>No Score</option>
-                 <option>(10) Masterpiece</option>
-                 <option>(9) Great</option>
-                 <option>(8) Very Good</option>
-                 <option>(7) Good</option>
-                 <option>(6) Fine</option>
-                 <option>(5) Avarage</option>
-                 <option>(4) Bad</option>
-                 <option>(3) Very Bad</option>
-                 <option>(2) Horrible</option>
-                 <option>(1) Appalling</option>
-             </select>
+        <div className="add-modal-bg">
+            <div className="add-modal">
+                <p>{title}</p>
+                <form onSubmit={onSubmit}>
+                    <label>Select Score:</label>
+                    <select name="score" id="score" onChange={onChange}>
+                        <option>No Score</option>
+                        <option>(10) Masterpiece</option>
+                        <option>(9) Great</option>
+                        <option>(8) Very Good</option>
+                        <option>(7) Good</option>
+                        <option>(6) Fine</option>
+                        <option>(5) Avarage</option>
+                        <option>(4) Bad</option>
+                        <option>(3) Very Bad</option>
+                        <option>(2) Horrible</option>
+                        <option>(1) Appalling</option>
+                    </select>
 
-             <select name="status" id="status" onChange={onChange}>
-                 <option>choose status</option>
-                 <option>currently watching</option>
-                 <option>completed</option>
-                 <option>on hold</option>
-                 <option>dropped</option>
-                 <option>plan to watch</option>
-             </select>
+                    <label>Choose Status</label>
+                    <select name="status" id="status" onChange={onChange}>
+                        <option>currently watching</option>
+                        <option>completed</option>
+                        <option>on hold</option>
+                        <option>dropped</option>
+                        <option>plan to watch</option>
+                    </select>
 
-             <button type="submit">add media</button>
+                    <button className="" type="submit">add media</button>
 
-        </form>
-        <ToastContainer />
+                </form>
+                <button className="" onClick={() => toggleSelect()}>Cancel Add</button>
+                <ToastContainer />
+            </div>
+        </div>
         </>
     )
 }
