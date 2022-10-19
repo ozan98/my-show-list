@@ -1,7 +1,7 @@
 import util from '../util/util'
 import {useEffect} from 'react'
 import SearchForm from '../components/SearchForm'
-import ShowCard from '../components/ShowCard'
+import SearchCard from '../components/SearchCard'
 import {useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {setCurrentChecking} from '../features/tmdb/tmdbSlice'
@@ -29,7 +29,7 @@ function SearchListPage() {
 
     const getSearchedMedia = () => {
         return searchedMedia.map((media) => {
-            return <ShowCard 
+            return <SearchCard 
                             key={media.id}
                             id={media.id}
                             name={media.title || media.name}
@@ -44,9 +44,10 @@ function SearchListPage() {
 
     return (
         <>  
+            <div className="searchlist-container">
             <SearchForm />
-            search list page
             {getSearchedMedia()}
+            </div>
             
         </>
     )

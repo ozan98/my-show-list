@@ -10,6 +10,8 @@ import './stylesheets/login.css'
 import './stylesheets/mylist.css'
 import './stylesheets/discover.css'
 import './stylesheets/info.css'
+import './stylesheets/search.css'
+
 
 
 

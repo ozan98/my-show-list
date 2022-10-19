@@ -1,0 +1,60 @@
+@import './index.css';
+
+.searchlist-container {
+    width: 440px;
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-card {
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 10px;
+    border-bottom: 1px solid var(--primary);
+    display: flex;
+
+    color: var(--light);
+    gap: 7px;
+}
+
+.search-card img {
+    height: 150px;
+}
+
+
+.media-info {
+    display: grid;
+}
+.media-info p:nth-child(2) {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.media-info p:nth-child(2),
+.media-info p:nth-child(3),
+.media-info p:nth-child(4) {
+    color: var(--fade);
+}
+
+.score-release {
+    margin-top: auto;
+    margin-bottom:10px;
+}
+
+.score-release p:nth-child(1) {
+    color: var(--score);
+}
+
+.name-overview p:nth-child(1){
+    font-size: 18px;
+    font-weight: 900;
+}
+
+@media (min-width: 768px) {
+    .searchlist-container {
+        width: 1200px;
+    }
+}
