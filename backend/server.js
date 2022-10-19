@@ -25,7 +25,7 @@ if(process.env.NODE_ENV === 'production') {
         dotfiles: 'allow'
     }))
 
-    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')))
+    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../frontend/build/index.html')))
 }
 
 // This middle ware will replace express error handler
