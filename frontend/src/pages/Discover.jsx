@@ -2,19 +2,19 @@ import util from '../util/util'
 import ShowCard from '../components/ShowCard'
 import SearchForm from '../components/SearchForm'
 import {useNavigate} from 'react-router-dom'
-import {useState, useEffect} from 'react'
+import {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {
     getTrendingMovies, 
     getTrendingTvs, 
-    setCurrentChecking, 
-    reset} from '../features/tmdb/tmdbSlice'
+    setCurrentChecking,
+    } from '../features/tmdb/tmdbSlice'
 
 function Discover() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const {trendingMovies, trendingTvs, isLoading, isError, message} = useSelector((state) => state.tmdb) 
+    const {trendingMovies, trendingTvs, isError, message} = useSelector((state) => state.tmdb) 
     const {user} = useSelector((state) => state.auth)
 
     useEffect(() => {

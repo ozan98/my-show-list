@@ -7,14 +7,28 @@
     margin-right: auto
 }
 
-.button-mobile-container {
+/* .button-mobile-container {
     background-color: var(--dark);
     position: fixed;
     top: 0;
     left: 100%;
     width: 35%;
     height: 100vh;
-    /* z-index: 98; */
+    z-index: 98;
+
+    display: block;
+    padding-top: 120px;
+    transition: 0.4s;
+} */
+
+.button-mobile-container {
+    background-color: var(--dark);
+    position: fixed;
+    top: 0;
+    left: 65%;
+    width: 35%;
+    height: 100vh;
+    z-index: 98;
 
     display: block;
     padding-top: 120px;
@@ -37,7 +51,7 @@
 
 
 .mobile-container-active {
-    left: 64%;
+    left: 100%;
 }
 
 .type-button{
@@ -121,9 +135,12 @@
 }
 
 .movie-info p:nth-child(2),
-.movie-info p:nth-child(3),
 .movie-info p:nth-child(4) {
     color: var(--fade);
+}
+
+.movie-info p:nth-child(3){
+    color: var(--score);
 }
 
 .edit-btn {
@@ -210,9 +227,31 @@
         font-size: 30px;
     }
 
-    /* .button-mobile-container {
-        width: 50%;
-    } */
+    .search-bar {
+        width: 70;
+    }
+
+    .button-mobile-container {
+        width: 15;
+    }
+
+    .button-mobile-container {
+        background-color: var(--dark);
+        position: fixed;
+        top: 0;
+        left: 85%;
+        width: 15%;
+        height: 100vh;
+        /* z-index: 98; */
+    
+        display: block;
+        padding-top: 120px;
+        transition: 0.4s;
+    }
+
+    .mobile-container-active {
+        left: 100%;
+    }
 }
 
 

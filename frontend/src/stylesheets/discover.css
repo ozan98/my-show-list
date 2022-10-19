@@ -63,10 +63,15 @@
     align-items:flex-start;
     flex-direction: column;
     gap: 4px;
+    
 }
 
 .card-info p:nth-child(3){
     color: #757474;
+}
+
+.card-info p:nth-child(1){
+    color: var(--score);
 }
 
 .search-panel-container {

@@ -8,7 +8,7 @@ function ShowCard({id, title, image, score, releaseDate, overView, checkMedia}) 
                     <img src={image} alt="" onClick={() => checkMedia(id)}/>
                 </div>
                 <div className="card-info">
-                    <p>{`${score} / 10`}</p>
+                    <p>{`${Math.floor(score)} / 10`}</p>
                     <p>{title}</p>
                     <p>{releaseDate}</p>
                 </div>
