@@ -20,8 +20,10 @@ app.use('/api/shows/', require('./routes/showRoutes'))
 app.use('/api/users/', require('./routes/userRoutes'))
 
 // Serve frontend
-if(process.env.NODE_ENV == 'production') {
-    app.use(express.static(path.join(__dirname, '../frontend/build')))
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../frontend/build'), {
+        dotfiles: 'allow'
+    }))
 
     app.get('*', (req, res) => res.sendFile(__dirname, '../', 'frontend', 'build', 'index.html'))
 }
