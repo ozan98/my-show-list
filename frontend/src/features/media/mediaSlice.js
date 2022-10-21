@@ -67,7 +67,14 @@ export const mediaSlice = createSlice({
     name: 'media',
     initialState,
     reducers: {
+        resetErrorMedia: (state) => {
+            state.isErrorMedia = false
+            state.messageMedia = ''
+            state.isLoadingMedia = false
+            state.isSuccessMedia = false
+        },
         resetMedia: (state) => initialState
+
     },
     extraReducers: (builder) => {
         builder // addMedia 
@@ -77,12 +84,14 @@ export const mediaSlice = createSlice({
         .addCase(addMedia.fulfilled, (state, action) => {
             state.isLoadingMedia = false
             state.isSuccessMedia = true
+            state.isErrorMedia = false
             state.medias.push(action.payload)
+            state.messageMedia = ''
         })
         .addCase(addMedia.rejected, (state, action) => {
-            state.isLoading = false
-            state.isError = true
-            state.message = action.payload
+            state.isLoadingMedia = false
+            state.isErrorMedia = true
+            state.messageMedia = action.payload
         }) // getAllMedia
         .addCase(getAllMedia.pending, (state) => {
             state.isLoadingMedia = true
@@ -130,5 +139,5 @@ export const mediaSlice = createSlice({
     }
 })
 
-export const {resetMedia} = mediaSlice.actions
+export const {resetErrorMedia, resetMedia} = mediaSlice.actions
 export default mediaSlice.reducer

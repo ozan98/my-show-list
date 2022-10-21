@@ -1,9 +1,9 @@
 
-function SearchCard({name, image, score, releaseDate, overView}) {
+function SearchCard({id, name, image, score, releaseDate, overView, checkMedia}) {
     
     return (
         <div className="search-card">
-            <div className="img-container">
+            <div className="img-container" onClick={()=> checkMedia(id)}>
                 <img src={image}/>
             </div>
             <div className="media-info">

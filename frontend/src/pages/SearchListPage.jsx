@@ -35,7 +35,7 @@ function SearchListPage() {
                             name={media.title || media.name}
                             image={util.getImage(media.poster_path)}
                             score={media.vote_average}
-                            releaseDate={media.release_date}
+                            releaseDate={media.release_date || media.first_air_date}
                             overView={media.overview}
                             checkMedia={selectMedia}
                     />

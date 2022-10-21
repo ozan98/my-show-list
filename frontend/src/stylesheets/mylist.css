@@ -25,10 +25,10 @@
     background-color: var(--dark);
     position: fixed;
     top: 0;
-    left: 65%;
+    left: 100%;
     width: 35%;
     height: 100vh;
-    z-index: 98;
+    z-index: 97;
 
     display: block;
     padding-top: 120px;
@@ -51,7 +51,7 @@
 
 
 .mobile-container-active {
-    left: 100%;
+    left: 65%;
 }
 
 .type-button{
@@ -239,7 +239,7 @@
         background-color: var(--dark);
         position: fixed;
         top: 0;
-        left: 85%;
+        left: 100%;
         width: 15%;
         height: 100vh;
         /* z-index: 98; */
@@ -250,7 +250,7 @@
     }
 
     .mobile-container-active {
-        left: 100%;
+        left: 85%;
     }
 }
 

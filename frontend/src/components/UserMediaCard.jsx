@@ -1,3 +1,4 @@
+import util from '../util/util'
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import {useState} from 'react'
@@ -48,7 +49,7 @@ function UserMediaCard({id, title, imagePath, mediaType, score, status, selectTo
     
     return (
         <div className="user-media-card">
-            <img src={imagePath}/>
+            <img src={util.getImage(imagePath)}/>
             <div className="movie-info">
                 <p>{title}</p>
                 <p>{mediaType}</p>

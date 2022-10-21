@@ -1,4 +1,5 @@
-import {toast} from 'react-toastify'
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import {FaSignInAlt} from 'react-icons/fa'
 import {useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
@@ -85,6 +86,7 @@ function Login() {
                         </div>
                     </form>
                 </section>
+                {/* <ToastContainer/> */}
             </div>
     )
 }

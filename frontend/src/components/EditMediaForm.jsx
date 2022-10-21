@@ -23,21 +23,7 @@ function EditMediaForm({id, title, imagePath, media_type, cancelEdit, removeMedi
 
     const onSubmit = (e) => {
         e.preventDefault()
-        
-        // Check valid status input
-        if(formData.status === 'choose status') {
-            toast.error('Please select a status', {
-                position: 'top-center',
-            })
-        }
-
-        // Check valid score input
-        if(formData.score === 'Select Score'){
-            toast.error('Please select a score', {
-                position: 'top-center'
-            })
-        }
-        
+                
         const data = {
             _id: id,
             title: title,
@@ -47,6 +33,11 @@ function EditMediaForm({id, title, imagePath, media_type, cancelEdit, removeMedi
             status: status
         }
         edit(data)
+
+        toast.success('Succesfuly edited media!', {
+            position: 'top-center',
+            theme: 'dark',
+        })
     }
 
 

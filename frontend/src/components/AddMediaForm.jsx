@@ -1,13 +1,14 @@
 import util from '../util/util'
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import {useState} from 'react'
-import {useDispatch} from 'react-redux'
-import {addMedia} from '../features/media/mediaSlice'
+import {useState, useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {addMedia, getAllMedia} from '../features/media/mediaSlice'
 
 
 function AddMediaForm({title, poster_path, media_type, toggleSelect}){
     const dispatch = useDispatch()
+    const {medias} = useSelector((state) => state.media)
 
     const [formData, setFormData] = useState({
         score: 'Select Score',
@@ -15,6 +16,10 @@ function AddMediaForm({title, poster_path, media_type, toggleSelect}){
     })
 
     const {score, status} = formData
+
+    useEffect(() => {
+        dispatch(getAllMedia)
+    },[])
 
     const onChange = (e) => {
         setFormData((prevData)=> {
@@ -27,21 +32,7 @@ function AddMediaForm({title, poster_path, media_type, toggleSelect}){
 
     const onSubmit = (e) => {
         e.preventDefault()
-        
-        // Check valid status input
-        if(formData.status === 'choose status') {
-            toast.error('Please select a status', {
-                position: toast.POSITION.TOP_CENTER,
-            })
-        }
 
-        // Check valid score input
-        if(formData.score === 'Select Score'){
-            toast.error('Please select a score', {
-                position: 'top-center'
-            })
-        }
-        
         const data = {
             title: title,
             imagePath: poster_path,
@@ -49,7 +40,25 @@ function AddMediaForm({title, poster_path, media_type, toggleSelect}){
             score: score,
             status: status
         }
-        dispatch(addMedia(data))
+
+        const mediaExists = medias.filter((media) => {
+            return media.title === data.title
+        })
+
+        if(mediaExists.length > 0){
+            toast.error(`${data.title} is already in list`, {
+                position: 'top-center',
+                theme: 'dark',
+            })
+        }else {
+            dispatch(addMedia(data))
+            toast.success(`Succesfuly added ${data.title} to list`, {
+                position: 'top-center',
+                theme: 'dark',
+            })
+            toggleSelect();
+
+        }
     }
 
 
@@ -88,7 +97,6 @@ function AddMediaForm({title, poster_path, media_type, toggleSelect}){
 
                 </form>
                 <button className="" onClick={() => toggleSelect()}>Cancel Add</button>
-                <ToastContainer />
             </div>
         </div>
         </>

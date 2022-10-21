@@ -8,6 +8,8 @@ import Register from './pages/Register'
 import LandingPage from './pages/LandingPage'
 import Info from './pages/Info'
 import SearchListPage from './pages/SearchListPage'
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -26,6 +28,7 @@ function App() {
             <Route path='/searchpage' element={<SearchListPage />} />
           </Routes>
       </Router>
+      <ToastContainer/>
     </>
   );
 }

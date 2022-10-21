@@ -48,7 +48,6 @@ function Info() {
     }
 
     const getGenres = (genreList) => {
-        console.log(genreList)
         return genreList.map((genre) => {
             return <p key={genre.id}>{genre.name}</p>
         })

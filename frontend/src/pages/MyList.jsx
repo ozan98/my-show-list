@@ -26,9 +26,9 @@ function MyList() {
         }
         dispatch(getAllMedia())
 
-        return () => {
-            setMobileSlider(false)
-        }
+        // return () => {
+        //     setMobileSlider(false)
+        // }
 
     },[user, dispatch, navigate])
 
@@ -64,7 +64,7 @@ function MyList() {
                         key={media._id}
                         id={media._id} 
                         title={media.title}
-                        imagePath={util.getImage(media.imagePath)}
+                        imagePath={media.imagePath}
                         mediaType={media.mediaType}
                         score={media.score}
                         status={media.status}
@@ -121,7 +121,7 @@ function MyList() {
                     <div className={(statusToggle('currently watching')? "type-active" : "")} onClick={() => setMediaStatusFilter('currently watching')}>Currently Watching</div>
                     <div className={(statusToggle('completed')? "type-active" : "")} onClick={() => setMediaStatusFilter('completed')}>Completed</div>
                     <div className={(statusToggle('on hold')? "type-active" : "")} onClick={() => setMediaStatusFilter('on hold')}>On Hold</div>
-                    <div className={(statusToggle('completed')? "type-active" : "")} onClick={() => setMediaStatusFilter('dropped')}>Dropped</div>
+                    <div className={(statusToggle('dropped')? "type-active" : "")} onClick={() => setMediaStatusFilter('dropped')}>Dropped</div>
                     <div className={(statusToggle('plan to watch')? "type-active" : "")} onClick={() => setMediaStatusFilter('plan to watch')}>Plan To Watch</div>
                 </div>
                     <input 

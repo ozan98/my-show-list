@@ -11,7 +11,7 @@ function NavBar() {
     const navigate = useNavigate()
     
     const {user} = useSelector((state) => state.auth)
-    const [mobileMenuToggle, setMobileToggle] = useState(true)
+    const [mobileMenuToggle, setMobileToggle] = useState(false)
 
     useEffect(() => {
         return () => {
