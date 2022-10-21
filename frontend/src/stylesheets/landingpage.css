@@ -1,0 +1,28 @@
+@import './index.css';
+
+.landing-page-container {
+    max-width: 1200px;
+    padding-top: 85px;
+    margin: 0 auto;
+    
+}
+
+.hero-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50vh;
+    background-color: var(--primary);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-header {
+    padding: 0 10px;
+    color: var(--light);
+    text-align: center;
+    font-size: 28px;
+}

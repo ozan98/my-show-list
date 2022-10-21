@@ -11,6 +11,7 @@ import './stylesheets/mylist.css'
 import './stylesheets/discover.css'
 import './stylesheets/info.css'
 import './stylesheets/search.css'
+import './stylesheets/landingpage.css'
 
 
 

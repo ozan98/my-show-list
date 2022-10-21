@@ -1,18 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500');
 
 :root{
-    /* --primary: #8c83ff;
-    --light: #EEEEEE;
-    --dark: #212121;
-    --lighterPrimary: #838bff;
-    --background: #c4bebe; */
-
-    /* --dark: #1D3A48;
-    --light: #F3F8F9;
-    --primary: #264858;
-    --background: #42616F;
-    --font-dark: #366479; */
-
+    
     --dark: #202020;
     --primary: #373737;
     --background: #181818;
@@ -33,9 +22,9 @@ body {
     background-color: var(--background);
     height: 100vh;
 }
-
+/* 
 i {
     background-color: rgba(0, 136, 169, 1);
 
-}
+} */
 
