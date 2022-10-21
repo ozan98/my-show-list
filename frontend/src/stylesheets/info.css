@@ -85,6 +85,7 @@
     grid-auto-columns: 25%;
 
     overflow-x: auto;
+    overflow-y: hidden;
     overscroll-behavior-inline: contain;
 }
 
