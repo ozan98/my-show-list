@@ -1,7 +1,8 @@
 @import './index.css';
 
 .discover-container {
-    width: 440px;
+    /* width: 440px; */
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 120px;
@@ -117,7 +118,7 @@
 
 @media (min-width: 768px) {
     .discover-container {
-        width: 1200px;
+        /* width: 1200px; */
     }
 
     .trending-movie-container{

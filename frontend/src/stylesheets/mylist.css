@@ -2,7 +2,8 @@
 
 .mylist-container {
     margin-top: 70.9px;
-    width: 440px;
+    /* width: 440px; */
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto
 }
@@ -218,7 +219,7 @@
 @media (min-width: 768px) {
 
     .mylist-container {
-        width: 1200px;
+        /* width: 1200px; */
     }
 
     .modal {

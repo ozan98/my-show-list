@@ -20,7 +20,7 @@
 body {
     font-family: "Montserrat", sans-serif;
     background-color: var(--background);
-    height: 100vh;
+    /* height: 100vh; */
 }
 /* 
 i {
