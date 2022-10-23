@@ -9,7 +9,6 @@ const showSchema = mongoose.Schema({
     title: {
         type: String,
         required: [true, 'Please add a title value'],
-        unique: true
     },
     imagePath: {
         type: String,
@@ -17,7 +16,7 @@ const showSchema = mongoose.Schema({
     },
     mediaType: {
         type: String,
-        require: [true, 'Please provide a media type']
+        required: [true, 'Please provide a media type']
     },
     score: {
         type: String,

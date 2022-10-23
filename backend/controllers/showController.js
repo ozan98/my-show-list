@@ -22,7 +22,7 @@ const setShows = asyncHandler(async (req, res) => {
     }
 
     // Check if title already exist in db
-    const titleExist = await Show.findOne({ title })
+    const titleExist = await Show.findOne({ user: req.user, title: title })
 
 
 

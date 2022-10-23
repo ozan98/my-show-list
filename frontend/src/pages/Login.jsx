@@ -17,7 +17,7 @@ function Login() {
 
     const {email, password} = formData
 
-    const {user, isLoadingUser, isErrorUser, isSuccessUser, messageUser} = useSelector((state) => state.auth)
+    const {user, isErrorUser, isSuccessUser, messageUser} = useSelector((state) => state.auth)
 
     useEffect(() => {
         if(isErrorUser) {
@@ -86,7 +86,6 @@ function Login() {
                         </div>
                     </form>
                 </section>
-                {/* <ToastContainer/> */}
             </div>
     )
 }

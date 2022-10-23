@@ -45,7 +45,7 @@ function AddMediaForm({title, poster_path, media_type, toggleSelect}){
             return media.title === data.title
         })
 
-        if(mediaExists.length > 0){
+        if(mediaExists.length >= 1){
             toast.error(`${data.title} is already in list`, {
                 position: 'top-center',
                 theme: 'dark',
