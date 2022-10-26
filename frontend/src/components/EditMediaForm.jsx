@@ -6,8 +6,8 @@ import {useState} from 'react'
 function EditMediaForm({id, title, imagePath, media_type, cancelEdit, removeMedia, edit}){
 
     const [formData, setFormData] = useState({
-        score: 'Select Score',
-        status: 'choose status'
+        score: 'No Score',
+        status: '(10) Masterpiece'
     })
 
     const {score, status} = formData
@@ -34,7 +34,7 @@ function EditMediaForm({id, title, imagePath, media_type, cancelEdit, removeMedi
         }
         edit(data)
 
-        toast.success('Succesfuly edited media!', {
+        toast.success(`Succesfuly edited ${title}`, {
             position: 'top-center',
             theme: 'dark',
         })
@@ -43,14 +43,12 @@ function EditMediaForm({id, title, imagePath, media_type, cancelEdit, removeMedi
 
 
     return (
-        <>
         <div className="modal-bg">
             <div className="modal">
                 <p>{title}</p>
                 <form onSubmit={onSubmit}>
                     <label>Select Score</label>
                     <select name="score" id="score" onChange={onChange}>
-                        {/* <option>Select Score</option> */}
                         <option>No Score</option>
                         <option>(10) Masterpiece</option>
                         <option>(9) Great</option>
@@ -65,7 +63,6 @@ function EditMediaForm({id, title, imagePath, media_type, cancelEdit, removeMedi
                     </select>
                     <label>Select Status:</label>
                     <select name="status" id="status" onChange={onChange}>
-                        {/* <option>select status</option> */}
                         <option>currently watching</option>
                         <option>completed</option>
                         <option>on hold</option>
@@ -79,10 +76,8 @@ function EditMediaForm({id, title, imagePath, media_type, cancelEdit, removeMedi
                     <button onClick={() => removeMedia(id)}>Delete Media</button>
                     <button onClick={() => cancelEdit()}>Cancel Edit</button>
                 </div>
-                <ToastContainer />
             </div>
         </div>
-        </>
     )
 }
 

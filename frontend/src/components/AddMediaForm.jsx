@@ -1,5 +1,5 @@
 import util from '../util/util'
-import {ToastContainer, toast} from 'react-toastify'
+import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
@@ -11,8 +11,8 @@ function AddMediaForm({title, poster_path, media_type, toggleSelect}){
     const {medias} = useSelector((state) => state.media)
 
     const [formData, setFormData] = useState({
-        score: 'Select Score',
-        status: 'choose status'
+        score: 'No Score',
+        status: '(10) Masterpiece'
     })
 
     const {score, status} = formData
