@@ -34,6 +34,15 @@ function NavBar() {
         }
     }
 
+    const onLogoutMobile = () => {
+        setMobileToggle(false)
+        dispatch(logout())
+        dispatch(reset())
+        dispatch(resetMedia())
+        navigate('/')
+
+    }
+
     return (
             <>
             <nav className="navbar">
@@ -80,7 +89,7 @@ function NavBar() {
                     <Link className="mobile-link" onClick={() => setMobileToggle(false)} to="/discover">Discover</Link>
                     {user ? (
                         <>
-                            <div className="mobile-link" onClick={() => setMobileToggle(false)} onClick={onLogout}>
+                            <div className="mobile-link" onClick={onLogoutMobile}>
                                 <FaSignOutAlt />Logout
                             </div>
                         </>
