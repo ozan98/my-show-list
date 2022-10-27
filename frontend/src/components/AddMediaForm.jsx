@@ -12,7 +12,7 @@ function AddMediaForm({title, poster_path, media_type, toggleSelect}){
 
     const [formData, setFormData] = useState({
         score: 'No Score',
-        status: '(10) Masterpiece'
+        status: 'currently watching'
     })
 
     const {score, status} = formData
