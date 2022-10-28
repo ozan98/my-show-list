@@ -214,6 +214,11 @@
     background-color: var(--dark);
 }
 
+.empty-message {
+    margin: 150px 20px;
+    color: var(--fade);
+    text-align: center;
+}
 
 
 @media (min-width: 768px) {

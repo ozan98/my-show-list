@@ -4,7 +4,7 @@ import EditMediaForm from './EditMediaForm'
 import {useDispatch} from 'react-redux'
 import {deleteMedia, editMedia} from '../features/media/mediaSlice'
 
-function UserMediaCard({id, title, imagePath, mediaType, score, status, selectToEdit}) {
+function UserMediaCard({id, title, imagePath, mediaType, score, status}) {
 
     const dispatch = useDispatch()
 

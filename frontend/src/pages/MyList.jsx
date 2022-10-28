@@ -68,7 +68,6 @@ function MyList() {
                         mediaType={media.mediaType}
                         score={media.score}
                         status={media.status}
-                        selectToEdit={selectToEdit}
                     />
         })
     }
@@ -99,9 +98,17 @@ function MyList() {
         return filteredList
     }
 
-    const selectToEdit = (id) => {
-        console.log(id)
+    const renderEmptyListMessage = () => {
+        console.log('hi')
+        return (
+            <div>
+                <p>It looks like your media list is empty</p>
+                <p>Head over to discover page and add media to your list</p>
+            </div>
+        )
     }
+
+    
 
 
     return (
@@ -139,6 +146,10 @@ function MyList() {
     
             <div className="cards">
                 {(medias) ? (renderMedias(medias)) : null}
+            </div>
+
+            <div className="empty-message">
+                {(medias.length < 1) ? (renderEmptyListMessage()) : null}
             </div>
             
         </div>
